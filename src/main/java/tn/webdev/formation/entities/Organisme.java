@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Organisme {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orgId;
 
     private String libelle;

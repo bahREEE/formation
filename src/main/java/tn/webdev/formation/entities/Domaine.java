@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 public class Domaine {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long domaineId;
 
     private String libelle;

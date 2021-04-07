@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class Participant {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long participanId;
 
     private String type;
@@ -39,7 +39,7 @@ public class Participant {
     private Pays pays;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idProfil", referencedColumnName = "id")
+    @JoinColumn(name = "idProfil", referencedColumnName = "idProfil")
     private Profil profil;
 
     @ManyToMany

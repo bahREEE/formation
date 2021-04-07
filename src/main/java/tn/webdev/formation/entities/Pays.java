@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class Pays {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paysId;
 
     private String nom;

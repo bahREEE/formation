@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 public class Formation {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long formationId;
 
     private String titre;

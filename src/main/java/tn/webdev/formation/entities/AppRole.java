@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 public class AppRole {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long roleId;
 
     private String nomRole;
