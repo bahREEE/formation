@@ -7,5 +7,7 @@ import tn.webdev.formation.entities.AppRole;
 
 @Repository
 public interface RoleRepository extends JpaRepository<AppRole, Long>{
+
+    AppRole findByNomRole(String rolename);
     
 }

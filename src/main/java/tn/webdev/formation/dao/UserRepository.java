@@ -7,5 +7,7 @@ import tn.webdev.formation.entities.AppUser;
 
 @Repository
 public interface UserRepository extends JpaRepository<AppUser, Long>{
+
+    AppUser findByUsername(String username);
     
 }
