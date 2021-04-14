@@ -1,5 +1,8 @@
 package tn.webdev.formation.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import tn.webdev.formation.dao.RoleRepository;
 import tn.webdev.formation.dao.UserRepository;
 import tn.webdev.formation.entities.AppRole;
 import tn.webdev.formation.entities.AppUser;
+import tn.webdev.formation.entities.ERole;
 
 @Service
 @Transactional
@@ -31,7 +35,7 @@ public class AccountServiceImpl implements AccountService{
         newUser.setUsername(username);
         newUser.setPassword(passwordEncoder.encode(password));
         userRepository.save(newUser);
-        addRoleToUser(username,"USER");
+        addRoleToUser(newUser,"SIMPLE_UTILISATEUR");
         return newUser;
     }
 
@@ -46,12 +50,17 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
-    public void addRoleToUser(String username, String rolename) {
-        AppUser user = userRepository.findByUsername(username);
-        AppRole role = roleRepository.findByNomRole(rolename);
+    public void addRoleToUser(AppUser user, String role) {
+        List<AppRole>roles=new ArrayList<>();
+        switch (role){
+            case "SIMPLE_UTILISATEUR":roles.add(roleRepository.findByroleName(ERole.SIMPLE_UTILISATEUR));
+            break;
+            case "ADMINISTRATEUR":roles.add(roleRepository.findByroleName(ERole.ADMINISTRATEUR));
+            default: new RuntimeException("Error: Role not found!");
+        }
+        user.setRoles(roles);
 
-        user.setRole(role);
     }
-
+  
     
 }
