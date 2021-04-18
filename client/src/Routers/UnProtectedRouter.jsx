@@ -8,8 +8,7 @@ const UnProtectedRouter = ({ component: Component, user, rest }) => {
     if (user.role === "user") return "/user";
     return "/login";
   };
-  console.log("login");
-  console.log(user);
+
   return (
     <Route
       {...rest}

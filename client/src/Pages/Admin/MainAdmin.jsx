@@ -9,9 +9,20 @@ const MainAdmin = () => {
     <Fragment>
       <Dashboard />
       <main className="main">
-        <h1>Admin Acceuil</h1>
         <Switch>
-          <Route path="/admin/account" component={Accounts} />
+          <Route path="/admin/accounts" exact component={Accounts} />
+          <Route
+            path="/admin/formations"
+            exact
+            render={() => <h1>Formations</h1>}
+          />
+          <Route
+            path="/admin/settings"
+            exact
+            render={() => <h1>Settings</h1>}
+          />
+
+          <Route path="/admin" exact render={() => <h1>Acceuil Admin</h1>} />
           <Redirect to="/admin" />
         </Switch>
       </main>

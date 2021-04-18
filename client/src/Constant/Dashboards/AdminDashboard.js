@@ -13,19 +13,19 @@ export const adminDash = [
     Icon: DashIcon,
     identif: "formations",
     name: "Fomrations",
-    url: `${adminDefaultUrl}`,
+    url: `${adminDefaultUrl}/formations`,
   },
   {
     Icon: DashIcon,
     identif: "accounts",
     name: "Accounts",
-    url: `${adminDefaultUrl}`,
+    url: `${adminDefaultUrl}/accounts`,
   },
   {
     Icon: DashIcon,
     identif: "Settings",
     name: "Settings",
-    url: `${adminDefaultUrl}`,
+    url: `${adminDefaultUrl}/settings`,
   },
   {
     Icon: DashIcon,
@@ -49,6 +49,6 @@ export const adminDash = [
     Icon: DashIcon,
     identif: "dashboard2",
     name: "Dashboard2",
-    url: `${adminDefaultUrl}`,
+    url: `${adminDefaultUrl}/eaz`,
   },
 ];
