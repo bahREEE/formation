@@ -20,7 +20,7 @@
     text-decoration: none;
     display: flex;
     align-items: center;
-    color: var(--nav-text-color);
+    color: var(--grey-color);
     backface-visibility: hidden;
     position: relative;
     &::after {
@@ -83,7 +83,7 @@
   &--list {
     display: flex;
     align-items: center;
-    color: var(--nav-text-color);
+    color: var(--grey-color);
     cursor: pointer;
     padding: 0rem 3rem;
     &:hover {
@@ -93,7 +93,7 @@
 
   &--items {
     margin-top: 3px;
-    color: var(--nav-text-color);
+    color: var(--grey-color);
     list-style: none;
     display: flex;
     flex-direction: column;
