@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { Switch, Redirect } from "react-router-dom";
 import ProtectedRouter from "./Routers/ProtectedRouter";
 import UnProtectedRouter from "./Routers/UnProtectedRouter";
-import AdminAcceuil from "./Pages/Admin/Acceuil";
-import UserAcceuil from "./Pages/User/Acceuil";
+import MainAdmin from "./Pages/Admin/MainAdmin";
+import MainUser from "./Pages/User/MainUser";
 import Signup from "./Pages/Signup/Signup";
 import Login from "./Pages/Login/Login";
-import "./App.css";
+import HeadBar from "./Components/HeadBar/HeadBar";
+import "./App.scss";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -30,22 +31,27 @@ const App = () => {
           user={user}
         />
         {user && (
-          <Switch>
-            <ProtectedRouter
-              path="/admin"
-              exact
-              privilege="admin"
-              component={AdminAcceuil}
-              role={user.role}
-            />
-            <ProtectedRouter
-              path="/user"
-              exact
-              privilege="user"
-              component={UserAcceuil}
-              role={user.role}
-            />
-          </Switch>
+          <Fragment>
+            <HeadBar />
+            <div className="client__container">
+              <Switch>
+                <ProtectedRouter
+                  path="/admin"
+                  exact
+                  privilege="admin"
+                  component={MainAdmin}
+                  role={user.role}
+                />
+                <ProtectedRouter
+                  path="/user"
+                  exact
+                  privilege="user"
+                  component={MainUser}
+                  role={user.role}
+                />
+              </Switch>
+            </div>
+          </Fragment>
         )}
         <Redirect from="/" to="/login" />
       </Switch>

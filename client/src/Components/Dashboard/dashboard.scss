@@ -1,0 +1,136 @@
+.dashboard {
+  //border-right: 1px solid rgba($color: #686666, $alpha: 0.5);
+  flex: 0 0 17%;
+  background-color: #fff;
+  padding: 4rem 0rem 0rem 0rem;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+  }
+
+  &__item {
+    padding: 1.5rem 3rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--nav-text-color);
+    backface-visibility: hidden;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 5px;
+      height: 100%;
+      background-color: var(--main-color);
+      transform: scaleY(0);
+      transition: transform 0.4s;
+    }
+
+    &--active {
+      color: var(--main-color);
+      position: relative;
+      &::after {
+        transform: scaleY(1);
+      }
+    }
+
+    &:hover {
+      color: var(--main-color);
+    }
+  }
+
+  &__icon {
+    width: 2rem;
+    fill: currentColor;
+    margin-right: 2rem;
+
+    &--active {
+      fill: var(--main-color);
+    }
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: currentColor;
+    &--active {
+      font-weight: 900;
+    }
+  }
+
+  &__arrow {
+    width: 2rem;
+    margin-left: auto;
+    fill: currentColor;
+    transform: rotate(180deg);
+    transition: all 0.3s;
+  }
+}
+
+.dashboard__draggable {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 0rem;
+
+  &--list {
+    display: flex;
+    align-items: center;
+    color: var(--nav-text-color);
+    cursor: pointer;
+    padding: 0rem 3rem;
+    &:hover {
+      color: var(--main-color);
+    }
+  }
+
+  &--items {
+    margin-top: 3px;
+    color: var(--nav-text-color);
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    max-height: 0px;
+  }
+
+  &--item {
+    text-decoration: none;
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: currentColor;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      width: 5px;
+      height: 100%;
+      background-color: var(--main-color);
+      transform: scaleY(0);
+      transition: transform 0.4s;
+    }
+    &--active {
+      font-weight: 900;
+      color: var(--main-color);
+      position: relative;
+      &::after {
+        transform: scaleY(1);
+      }
+    }
+  }
+}
+
+/*
+
+ 
+*/
