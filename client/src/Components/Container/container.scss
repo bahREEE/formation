@@ -1,0 +1,17 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &__title {
+    font-size: 4rem;
+    text-transform: uppercase;
+    flex: 0 0 10%;
+  }
+
+  &__content {
+    box-shadow: 0 1.5rem 4rem rgba(#000000, 0.1);
+    flex: 1;
+    padding: 1rem;
+  }
+}
