@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "../../Components/Dashboard/Dashboard";
 import Container from "../../Components/Container/Container";
-import Accounts from "./Accounts/Accounts";
+import { AdminRoutes } from "../../Constant/routes";
 import "./main.scss";
 
 const MainAdmin = () => {
@@ -11,19 +11,20 @@ const MainAdmin = () => {
       <Dashboard />
       <main className="main">
         <Switch>
-          <Route path="/admin/accounts" exact component={Accounts} />
-          <Route
-            path="/admin/formations"
-            exact
-            render={() => <h1>Formations</h1>}
-          />
-          <Route
-            path="/admin/settings"
-            exact
-            render={() => <h1>Settings</h1>}
-          />
-
-          <Route path="/admin" exact render={() => <Container />} />
+          {AdminRoutes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact
+              render={(props) => (
+                <Container
+                  title={route.title}
+                  component={route.component}
+                  {...props}
+                />
+              )}
+            />
+          ))}
           <Redirect to="/admin" />
         </Switch>
       </main>

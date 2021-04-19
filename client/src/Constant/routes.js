@@ -1,3 +1,4 @@
+import Accounts from "../Pages/Admin/Accounts/Accounts";
 import MainAdmin from "../Pages/Admin/MainAdmin";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
@@ -26,5 +27,10 @@ export const MainRoutes = [
   { path: `${userPath}`, component: MainUser, privilege: "user" },
 ];
 
-export const AdminRoutes = [];
+export const AdminRoutes = [
+  { component: Accounts, title: "Accounts", path: `${adminPath}/accounts` },
+  { component: Accounts, title: "Formation", path: `${adminPath}/formations` },
+  { component: Accounts, title: "Settings", path: `${adminPath}/settings` },
+  { component: Accounts, title: "Acceuil", path: `${adminPath}` },
+];
 export const UserRoutes = [];
