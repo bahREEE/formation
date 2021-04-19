@@ -1,0 +1,9 @@
+.headbar {
+  height: 5rem;
+  &__logo {
+    color: var(--main-color);
+    background-color: #fff;
+    font-weight: bolder;
+    padding: 1rem;
+  }
+}
