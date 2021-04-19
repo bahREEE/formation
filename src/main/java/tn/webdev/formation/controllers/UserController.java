@@ -37,7 +37,7 @@ public class UserController {
         return new ResponseEntity<>("User added successfully", HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/deleteAllUsers")
+    @DeleteMapping(value = "/deleteallusers")
     public ResponseEntity<String> deleteallusers(){
         userRepository.deleteAll();
         return new ResponseEntity<>("All users deleted successfully", HttpStatus.OK);
