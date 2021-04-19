@@ -7,6 +7,7 @@ import Login from "./Pages/Login/Login";
 import HeadBar from "./Components/HeadBar/HeadBar";
 import "./App.scss";
 import { MainRoutes } from "./Constant/routes";
+import Input from "./Components/Input/Input";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -50,7 +51,11 @@ const App = () => {
                     role={user.role}
                   />
                 ))}
+
+
               </Switch>
+              <Input />
+
             </div>
           </Fragment>
         )}

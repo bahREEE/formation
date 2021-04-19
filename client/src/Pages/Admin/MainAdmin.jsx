@@ -21,7 +21,6 @@ const MainAdmin = () => {
             exact
             render={() => <h1>Settings</h1>}
           />
-
           <Route path="/admin" exact render={() => <h1>Acceuil Admin</h1>} />
           <Redirect to="/admin" />
         </Switch>
