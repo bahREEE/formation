@@ -2,11 +2,9 @@ import React, { Fragment, useEffect, useState } from "react";
 import { Switch, Redirect } from "react-router-dom";
 import ProtectedRouter from "./Routers/ProtectedRouter";
 import UnProtectedRouter from "./Routers/UnProtectedRouter";
-import Signup from "./Pages/Signup/Signup";
-import Login from "./Pages/Login/Login";
 import HeadBar from "./Components/HeadBar/HeadBar";
+import { AuthenticateRouters, MainRoutes } from "./Constant/routes";
 import "./App.scss";
-import { MainRoutes } from "./Constant/routes";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -29,13 +27,16 @@ const App = () => {
   return (
     <div className="App">
       <Switch>
-        <UnProtectedRouter component={Login} path="/login" exact user={user} />
-        <UnProtectedRouter
-          component={Signup}
-          path="/signup"
-          exact
-          user={user}
-        />
+        {AuthenticateRouters.map((route, index) => (
+          <UnProtectedRouter
+            key={index}
+            component={route.component}
+            path={route.path}
+            exact
+            user={user}
+          />
+        ))}
+
         {user && (
           <Fragment>
             <HeadBar />
