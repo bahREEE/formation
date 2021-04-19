@@ -1,0 +1,19 @@
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  &__title {
+    color: var(--title-color);
+    font-size: 4rem;
+    text-transform: uppercase;
+    text-shadow: -0.8rem 0.2rem 0.4rem rgba(#000000, 0.15);
+    flex: 0 0 10%;
+  }
+
+  &__content {
+    box-shadow: 0 1.5rem 4rem rgba(#000000, 0.1);
+    flex: 1;
+    padding: 1rem;
+  }
+}
