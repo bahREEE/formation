@@ -1,3 +1,4 @@
+import List from "../Components/List/List";
 import Accounts from "../Pages/Admin/Accounts/Accounts";
 import MainAdmin from "../Pages/Admin/MainAdmin";
 import Login from "../Pages/Login/Login";
@@ -28,9 +29,9 @@ export const MainRoutes = [
 ];
 
 export const AdminRoutes = [
-  { component: Accounts, title: "Accounts", path: `${adminPath}/accounts` },
-  { component: Accounts, title: "Formation", path: `${adminPath}/formations` },
-  { component: Accounts, title: "Settings", path: `${adminPath}/settings` },
-  { component: Accounts, title: "Acceuil", path: `${adminPath}` },
+  { component: Accounts, title: "Accounts", path: "/accounts" },
+  { component: Accounts, title: "Formation", path: "/formations" },
+  { component: Accounts, title: "Settings", path: "/settings" },
+  { component: List, title: "Acceuil", path: "/" },
 ];
 export const UserRoutes = [];

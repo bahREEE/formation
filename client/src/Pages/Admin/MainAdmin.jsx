@@ -14,7 +14,7 @@ const MainAdmin = () => {
           {AdminRoutes.map((route, index) => (
             <Route
               key={index}
-              path={route.path}
+              path={`/admin${route.path}`}
               exact
               render={(props) => (
                 <Container
