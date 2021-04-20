@@ -5,12 +5,14 @@ import Container from "../../Components/Container/Container";
 import { AdminRoutes } from "../../Constant/routes";
 import "./main.scss";
 import Select from "../../Components/Select/Select";
+import ResetButton from "../../Components/Buttons/ResetButton";
 
 const MainAdmin = () => {
   return (
     <Fragment>
       <Dashboard />
       <main className="main">
+        <ResetButton />
         <Switch>
           {AdminRoutes.map((route, index) => (
             <Route
