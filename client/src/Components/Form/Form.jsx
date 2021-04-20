@@ -1,19 +1,25 @@
 import React from "react";
 import Input from "../Input/Input";
+import SubmitButton from "../Buttons/SubmitButton.jsx";
+import "../../Style/style.scss";
+
 import "./form.scss";
 
 const Form = () => {
   return (
-    <form className="form" action="">
-      <div className="div">
+    <div className="div">
+      <form className="form" action="">
+        <Input required />
         <Input />
         <Input />
-      </div>
-      <Input />
-      <Input />
-      <Input />
-      <Input />
-    </form>
+        <Input />
+        <Input />
+        <Input />
+        <div className="__submit">
+          <SubmitButton />
+        </div>
+      </form>
+    </div>
   );
 };
 
