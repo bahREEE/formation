@@ -46,9 +46,9 @@ public class UserController {
         return new ResponseEntity<>("User added successfully", HttpStatus.OK);
     }
 
-    @PutMapping(value = "/{id}")
-    public ResponseEntity<String> updateuser(@PathVariable Long id, @RequestBody AppUser user){
-        user.setId(id);
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updateuser( @RequestBody AppUser user){
+       // user.setId(id);
         userRepository.save(user);
         return new ResponseEntity<>("User updated successfully !", HttpStatus.OK);
     }
