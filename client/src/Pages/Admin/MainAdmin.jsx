@@ -11,20 +11,6 @@ const MainAdmin = () => {
       <Dashboard />
       <main className="main">
         <Switch>
-<<<<<<< HEAD
-          <Route path="/admin/accounts" exact component={Accounts} />
-          <Route
-            path="/admin/formations"
-            exact
-            render={() => <h1>Formations</h1>}
-          />
-          <Route
-            path="/admin/settings"
-            exact
-            render={() => <h1>Settings</h1>}
-          />
-          <Route path="/admin" exact render={() => <h1>Acceuil Admin</h1>} />
-=======
           {AdminRoutes.map((route, index) => (
             <Route
               key={index}
@@ -39,7 +25,6 @@ const MainAdmin = () => {
               )}
             />
           ))}
->>>>>>> 3bbdb8764f74225552f11bd7870cf17824aec464
           <Redirect to="/admin" />
         </Switch>
       </main>
