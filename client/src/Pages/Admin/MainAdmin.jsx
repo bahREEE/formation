@@ -25,6 +25,7 @@ const MainAdmin = () => {
               )}
             />
           ))}
+
           <Redirect to="/admin" />
         </Switch>
       </main>

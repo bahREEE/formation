@@ -14,8 +14,8 @@ import tn.webdev.formation.entities.ERole;
 @SpringBootApplication
 public class FormationApplication implements CommandLineRunner{
 
-//	@Autowired
-//	private RoleRepository roleRepository;
+	@Autowired
+	private RoleRepository roleRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(FormationApplication.class, args);
@@ -24,8 +24,11 @@ public class FormationApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-	//	roleRepository.save(new AppRole(null,ERole.ADMINISTRATEUR));
-	//	roleRepository.save(new AppRole(null,ERole.SIMPLE_UTILISATEUR));		
+		if(roleRepository.findByroleName(ERole.SIMPLE_UTILISATEUR)==null){
+			roleRepository.save(new AppRole(null,ERole.ADMINISTRATEUR));
+			roleRepository.save(new AppRole(null,ERole.SIMPLE_UTILISATEUR));
+		}
+
 	}
 
 }
