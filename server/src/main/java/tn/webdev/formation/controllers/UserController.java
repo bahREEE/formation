@@ -1,5 +1,6 @@
 package tn.webdev.formation.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import tn.webdev.formation.dao.RoleRepository;
 import tn.webdev.formation.dao.UserRepository;
+import tn.webdev.formation.entities.AppRole;
 import tn.webdev.formation.entities.AppUser;
+import tn.webdev.formation.entities.ERole;
 
 @RestController
 public class UserController {
     
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private RoleRepository roleRepository;
 
     @GetMapping(value = "/users")
     public List<AppUser> getusers(){
@@ -34,6 +41,7 @@ public class UserController {
 
     @PostMapping(value = "/addUser")
     public ResponseEntity<String> addRole(@RequestBody AppUser user){
+        addRoleToUser(user,"ADMINISTRATEUR");
         userRepository.save(user);
         return new ResponseEntity<>("User added successfully", HttpStatus.OK);
     }
@@ -55,6 +63,20 @@ public class UserController {
     public ResponseEntity<String> deleteauser(@PathVariable Long id){
         userRepository.deleteById(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+    }
+
+    private void addRoleToUser(AppUser user, String role) {
+
+        List<AppRole>roles=new ArrayList<>();
+        switch (role){
+            case "SIMPLE_UTILISATEUR":roles.add(roleRepository.findByroleName(ERole.SIMPLE_UTILISATEUR));
+                break;
+            case "ADMINISTRATEUR":roles.add(roleRepository.findByroleName(ERole.ADMINISTRATEUR));
+                break;
+            default: new RuntimeException("Error: Role not found!");
+        }
+        user.setRoles(roles);
+
     }
 
 }
