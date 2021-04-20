@@ -1,0 +1,80 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+  position: relative;
+}
+
+thead {
+  position: relative;
+  width: 100%;
+}
+thead > tr {
+  background-color: var(--main-color);
+  width: 100%;
+}
+
+thead > tr > th {
+  position: relative;
+  padding: 0.5rem 2rem;
+  position: relative;
+  color: white;
+  font-size: 2rem;
+  text-align: left;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tbody {
+  position: relative;
+}
+
+tbody > tr {
+  position: relative;
+  cursor: pointer;
+  border-bottom: 1px solid var(--grey-color);
+  transition: all 0.1s;
+
+  &:hover {
+    box-shadow: 0rem 1.5rem 2rem rgba($color: #000000, $alpha: 0.4);
+    transform: scale(1.01);
+    border: none;
+  }
+  &:active {
+    transform: translateY(-0.5rem) scale(1.01);
+  }
+}
+
+td {
+  position: relative;
+  padding: 1rem;
+  font-size: 1.5rem;
+  text-align: left;
+  font-weight: 600;
+  height: 6rem;
+  letter-spacing: 0.5px;
+  color: var(--grey-color);
+}
+
+.list {
+  &__action {
+    width: 10rem;
+    text-align: center;
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  &__icon {
+    width: 2.5rem;
+
+    &--trash {
+      fill: var(--error-color);
+    }
+
+    &--edit {
+      fill: var(--grey-color);
+    }
+  }
+}
