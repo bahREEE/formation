@@ -3,13 +3,9 @@ import { Switch, Redirect } from "react-router-dom";
 import ProtectedRouter from "./Routers/ProtectedRouter";
 import UnProtectedRouter from "./Routers/UnProtectedRouter";
 import HeadBar from "./Components/HeadBar/HeadBar";
+import Input from "./Components/Input/Input";
 import { AuthenticateRouters, MainRoutes } from "./Constant/routes";
 import "./App.scss";
-<<<<<<< HEAD
-import { MainRoutes } from "./Constant/routes";
-import Input from "./Components/Input/Input";
-=======
->>>>>>> 3bbdb8764f74225552f11bd7870cf17824aec464
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -56,8 +52,6 @@ const App = () => {
                     role={user.role}
                   />
                 ))}
-
-
               </Switch>
               <Input />
             </div>
