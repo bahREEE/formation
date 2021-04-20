@@ -1,4 +1,6 @@
 import DashIcon from "../../assets/svgs/DashIcon";
+import Person from "../../assets/svgs/Person";
+import Logout from "../../assets/svgs/Logout";
 
 const adminDefaultUrl = "/admin";
 export const adminDefaultIdentif = "dashboard";
@@ -16,7 +18,7 @@ export const adminDash = [
     url: `${adminDefaultUrl}/formations`,
   },
   {
-    Icon: DashIcon,
+    Icon: Person,
     identif: "accounts",
     name: "Accounts",
     url: `${adminDefaultUrl}/accounts`,
@@ -37,18 +39,9 @@ export const adminDash = [
     ],
   },
   {
-    Icon: DashIcon,
-    name: "Options",
-    subList: [
-      { name: "Option 1", identif: "option4", url: `${adminDefaultUrl}` },
-      { name: "Option 2", identif: "option6", url: `${adminDefaultUrl}` },
-      { name: "Option 2", identif: "option5", url: `${adminDefaultUrl}` },
-    ],
-  },
-  {
-    Icon: DashIcon,
-    identif: "dashboard2",
-    name: "Dashboard2",
-    url: `${adminDefaultUrl}/eaz`,
+    Icon: Logout,
+    identif: "Logout",
+    name: "Logout",
+    url: `${adminDefaultUrl}/`,
   },
 ];
