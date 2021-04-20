@@ -4,7 +4,6 @@ import Dashboard from "../../Components/Dashboard/Dashboard";
 import Container from "../../Components/Container/Container";
 import { AdminRoutes } from "../../Constant/routes";
 import "./main.scss";
-import Select from "../../Components/Select/Select";
 
 const MainAdmin = () => {
   return (
