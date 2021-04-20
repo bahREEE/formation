@@ -1,19 +1,22 @@
 .form__group {
   position: relative;
   padding: 1.5rem 0 0;
+  width: 100%;
 }
 
 .form__field {
-  font-family: inherit;
+  width: 100%;
   min-width: 20rem;
   border: 0;
   border-bottom: 2px solid var(--grey-color);
   outline: 0;
+  padding: 1rem 0;
   font-size: 1.3rem;
-  padding: 0.7rem 0;
+  font-family: inherit;
+  font-weight: 500;
+  color: var(--grey-color);
   background: transparent;
   transition: border-color 0.2s;
-
   &::placeholder {
     color: transparent;
   }
@@ -21,7 +24,12 @@
   &:placeholder-shown ~ .form__label {
     font-size: 1.3rem;
     cursor: text;
-    top: 20px;
+    top: 23px;
+  }
+
+  &--error {
+    border-bottom: 2px solid var(--error-color);
+    border-width: 4px;
   }
 }
 
@@ -32,6 +40,21 @@
   transition: 0.2s;
   font-size: 1rem;
   color: var(--grey-color);
+
+  &--error {
+    color: var(--error-color);
+    font-weight: 600;
+  }
+
+  &--required {
+    &::after {
+      content: "*";
+      color: var(--error-color);
+      font-weight: 300;
+      font-size: 1.5rem;
+      margin-left: 5px;
+    }
+  }
 }
 
 .form__field:focus {
@@ -53,4 +76,11 @@
   &:invalid {
     box-shadow: none;
   }
+}
+
+.message__error {
+  color: var(--error-color);
+  padding: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
 }

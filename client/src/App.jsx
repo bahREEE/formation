@@ -3,7 +3,6 @@ import { Switch, Redirect } from "react-router-dom";
 import ProtectedRouter from "./Routers/ProtectedRouter";
 import UnProtectedRouter from "./Routers/UnProtectedRouter";
 import HeadBar from "./Components/HeadBar/HeadBar";
-import Input from "./Components/Input/Input";
 import { AuthenticateRouters, MainRoutes } from "./Constant/routes";
 import "./App.scss";
 
@@ -53,7 +52,6 @@ const App = () => {
                   />
                 ))}
               </Switch>
-              <Input />
             </div>
           </Fragment>
         )}
