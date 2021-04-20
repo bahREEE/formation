@@ -4,7 +4,7 @@ import DashItemDraggble from "./DashItemDraggable";
 import {
   adminDefaultIdentif,
   adminDash,
-} from "../../Constant/Dashboards/AdminDashboard";
+} from "../../Constant/Dashboards/adminDashboard";
 import "./dashboard.scss";
 
 const Dashboard = () => {
