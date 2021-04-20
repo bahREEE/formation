@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import Dashboard from "../../Components/Dashboard/Dashboard";
 import Container from "../../Components/Container/Container";
-import Input from "../../Components/Input/Input";
 import { AdminRoutes } from "../../Constant/routes";
 import "./main.scss";
 
