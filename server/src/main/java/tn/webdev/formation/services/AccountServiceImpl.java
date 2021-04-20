@@ -27,15 +27,15 @@ public class AccountServiceImpl implements AccountService{
     private RoleRepository roleRepository;
  
     @Override
-    public AppUser saveUser(String username, String password, String confirmedPassword) {
+    public AppUser saveUser(String username, String password, String confirmedPassword,String role) {
         AppUser user = userRepository.findByUsername(username);
         if(user != null) throw new RuntimeException("This user already exists !!!");
         if(!password.equals(confirmedPassword)) throw new RuntimeException("Please confirm your password");
         AppUser newUser = new AppUser();
         newUser.setUsername(username);
         newUser.setPassword(passwordEncoder.encode(password));
+        addRoleToUser(newUser,role);
         userRepository.save(newUser);
-        addRoleToUser(newUser,"SIMPLE_UTILISATEUR");
         return newUser;
     }
 
