@@ -23,7 +23,7 @@ const Select = ({ error, name, handleChange, options }) => {
         </select>
         <span className="focus"></span>
       </div>
-      {error && <div className="message__error">"he</div>}
+      {error && <div className="message__error">{error}</div>}
     </Fragment>
   );
 };

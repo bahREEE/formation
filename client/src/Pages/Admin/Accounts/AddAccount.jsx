@@ -19,12 +19,40 @@ const AddAccount = () => {
     setErrors({ ...errors, [`${name}`]: "" });
   };
 
+  const checkError = () => {
+    let errorsFound = false;
+    let generateErrors = {
+      username: "",
+      password: "",
+      role: "",
+    };
+    if (!user.role) {
+      generateErrors.role = "you need to specify a role!";
+      errorsFound = true;
+    }
+
+    if (user.password.length < 4) {
+      generateErrors.password = "password is weak!";
+      errorsFound = true;
+    }
+
+    if (user.username.length < 4) {
+      generateErrors.username = "username should have at least 4 characters!";
+      errorsFound = true;
+    }
+
+    setErrors(generateErrors);
+    return errorsFound;
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const result = await RequestApi("post", adminAPI.USER, "", user);
-      // console.log(result);
-      history.push("/admin/accounts");
+      if (!checkError()) {
+        // const result = await RequestApi("post", adminAPI.USER, "", user);
+        // console.log(result);
+        history.push("/admin/accounts");
+      }
     } catch (error) {
       console.log(error.message);
     }
