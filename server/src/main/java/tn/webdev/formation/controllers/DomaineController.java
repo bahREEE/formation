@@ -1,10 +1,9 @@
 package tn.webdev.formation.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,21 +31,24 @@ public class DomaineController {
     }
 
     @PostMapping(value = "/addDomaine")
-    public ResponseEntity<String> adddomaine(@RequestBody Domaine domaine){
-        domaineRepository.save(domaine);
-        return new ResponseEntity<>("Domaine added successfully", HttpStatus.OK);
+    public Domaine adddomaine(@RequestBody Domaine domaine){
+        return domaineRepository.save(domaine);   
     }
 
     @DeleteMapping(value = "/deleteAllDomaines")
-    public ResponseEntity<String> deletealldomaines(){
+    public List<Domaine> deletealldomaines(){
+        List<Domaine> l = new ArrayList<>();
+        l = domaineRepository.findAll();
         domaineRepository.deleteAll();
-        return new ResponseEntity<>("All domaines deleted successfully", HttpStatus.OK);
+        return l;
     }
 
     @DeleteMapping(value = "/deletedomaine/{id}")
-    public ResponseEntity<String> deleteadomaine(@PathVariable Long id){
+    public Domaine deleteadomaine(@PathVariable Long id){
+        Domaine d = new Domaine();
+        d = domaineRepository.findById(id).orElseThrow();
         domaineRepository.deleteById(id);
-        return new ResponseEntity<>("Domaine deleted successfully", HttpStatus.OK);
+        return d;
     }
 
 }

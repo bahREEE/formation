@@ -1,10 +1,9 @@
 package tn.webdev.formation.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,20 +31,23 @@ public class FormateurController {
     }
 
     @PostMapping(value = "/addFormateur")
-    public ResponseEntity<String> addFormateur(@RequestBody Formateur formateur){
-        formateurRepository.save(formateur);
-        return new ResponseEntity<>("Formateur added successfully", HttpStatus.OK);
+    public Formateur addFormateur(@RequestBody Formateur formateur){
+        return formateurRepository.save(formateur);
     }
 
     @DeleteMapping(value = "/deleteAllFormateurs")
-    public ResponseEntity<String> deleteallformateur(){
+    public List<Formateur> deleteallformateur(){
+        List<Formateur> f = new ArrayList<>();
+        f = formateurRepository.findAll();
         formateurRepository.deleteAll();
-        return new ResponseEntity<>("All formateurs deleted successfully", HttpStatus.OK);
+        return f;
     }
 
     @DeleteMapping(value = "/deleteformateur/{id}")
-    public ResponseEntity<String> deleteauformateur(@PathVariable Long id){
+    public Formateur deleteauformateur(@PathVariable Long id){
+        Formateur f = new Formateur();
+        f = formateurRepository.findById(id).orElseThrow();
         formateurRepository.deleteById(id);
-        return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
+        return f;
     }
 }
