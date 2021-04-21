@@ -42,7 +42,15 @@ const Form = () => {
           />
         </div>
         <div className="mb-small">
-          <Select />
+          <Select
+            name="role"
+            handleChange={handleChange}
+            error={error.role}
+            options={[
+              { value: "ADMINISTRATEUR", name: "Admin" },
+              { value: "SIMPLE_USER", name: "user" },
+            ]}
+          />
         </div>
 
         <div className="form__submit mt-meduim">

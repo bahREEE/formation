@@ -11,7 +11,7 @@ const Input = ({
   required,
 }) => {
   return (
-    <div class="form__group">
+    <div className="form__group">
       <input
         type={type}
         className={`form__field  ${error && "form__field--error"}`}
@@ -22,7 +22,7 @@ const Input = ({
         onChange={(e) => handleChange(e.target.value, name)}
       />
       <label
-        for="name"
+        htmlFor="name"
         className={`form__label  ${error && "form__label--error"} ${
           required && "form__label--required"
         } `}

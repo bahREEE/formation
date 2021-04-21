@@ -12,17 +12,18 @@ export const adminDash = [
     url: `${adminDefaultUrl}`,
   },
   {
-    Icon: DashIcon,
-    identif: "formations",
-    name: "Fomrations",
-    url: `${adminDefaultUrl}/formations`,
-  },
-  {
     Icon: Person,
     identif: "accounts",
     name: "Accounts",
     url: `${adminDefaultUrl}/accounts`,
   },
+  {
+    Icon: DashIcon,
+    identif: "formations",
+    name: "Fomrations",
+    url: `${adminDefaultUrl}/formations`,
+  },
+
   {
     Icon: DashIcon,
     identif: "Settings",

@@ -5,22 +5,22 @@ import "../Input/input.scss";
 const Select = ({ error, name, handleChange, options }) => {
   return (
     <Fragment>
-      <div class={`select  ${error && "select--error"}`}>
+      <div className={`select  ${error && "select--error"}`}>
         <select
           id="standard-select"
           name={name}
           onChange={(e) => handleChange(e.target.value, name)}
         >
-          <option value="none" selected disabled hidden>
+          <option value="none" defaultValue disabled hidden>
             Select an Option
           </option>
           {options?.map((option, index) => (
-            <options key={index} value={option.value}>
+            <option key={index} value={option.value}>
               {option.name}
-            </options>
+            </option>
           ))}
         </select>
-        <span class="focus"></span>
+        <span className="focus"></span>
       </div>
       {error && <div className="message__error">"he</div>}
     </Fragment>
