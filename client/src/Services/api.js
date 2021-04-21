@@ -1,5 +1,5 @@
-const url = "http://localhost:8080/";
+const url = "http://localhost:9000";
 
 export const adminAPI = {
-  USER: `${url}/users`,
+  USER: `${url}/users/`,
 };

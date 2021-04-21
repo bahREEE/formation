@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.*;
 
 import tn.webdev.formation.dao.RoleRepository;
 import tn.webdev.formation.dao.UserRepository;
+import tn.webdev.formation.dto.UserRequest;
 import tn.webdev.formation.entities.AppRole;
 import tn.webdev.formation.entities.AppUser;
 import tn.webdev.formation.entities.ERole;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
     
     @Autowired
@@ -24,6 +26,7 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
 
     @Autowired
     private RoleRepository roleRepository;
@@ -39,10 +42,13 @@ public class UserController {
     }
 
     @PostMapping(value = "/")
-    public ResponseEntity<String> addUser(@RequestBody AppUser user){
-        addRoleToUser(user,"ADMINISTRATEUR");
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
+    public ResponseEntity<String> addUser(@RequestBody UserRequest user){
+        System.out.println(user.getRole());
+        AppUser newUser = new AppUser();
+        newUser.setUsername((user.getUsername()));
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        addRoleToUser(newUser,user.getRole());
+        userRepository.save(newUser);
         return new ResponseEntity<>("User added successfully", HttpStatus.OK);
     }
 

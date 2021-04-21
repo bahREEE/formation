@@ -1,11 +1,12 @@
 import React from "react";
 
-const Trash = ({ className }) => {
+const Trash = ({ className, handleDelete, id }) => {
   return (
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      onClick={() => handleDelete(id)}
       viewBox="0 0 32 32"
     >
       <title>trash</title>

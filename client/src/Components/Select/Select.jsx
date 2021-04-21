@@ -10,9 +10,10 @@ const Select = ({ error, name, handleChange, options }) => {
           id="standard-select"
           name={name}
           onChange={(e) => handleChange(e.target.value, name)}
+          defaultValue="none"
         >
-          <option value="none" defaultValue disabled hidden>
-            Select an Option
+          <option value="none" disabled hidden>
+            Choose a role...
           </option>
           {options?.map((option, index) => (
             <option key={index} value={option.value}>

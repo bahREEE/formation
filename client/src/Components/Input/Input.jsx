@@ -9,6 +9,8 @@ const Input = ({
   handleChange,
   error,
   required,
+  value,
+  defaultValue,
 }) => {
   return (
     <div className="form__group">
@@ -20,6 +22,7 @@ const Input = ({
         id={id}
         required={required}
         onChange={(e) => handleChange(e.target.value, name)}
+        defaultValue={defaultValue}
       />
       <label
         htmlFor="name"

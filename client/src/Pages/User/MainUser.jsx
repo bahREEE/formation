@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from "../../Components/Dashboard/Dashboard";
-import Accounts from "../Admin/Accounts/Accounts";
+import ListAccounts from "../Admin/Accounts/ListAccounts";
 
 const MainUser = () => {
   return (
@@ -9,7 +9,7 @@ const MainUser = () => {
       <Dashboard />
       <main className="main">
         <Switch>
-          <Route path="/user/accounts" exact component={Accounts} />
+          <Route path="/user/accounts" exact component={ListAccounts} />
           <Route
             path="/user/formations"
             exact

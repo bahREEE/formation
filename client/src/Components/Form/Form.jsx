@@ -1,60 +1,41 @@
-import React, { useState } from "react";
-import Input from "../Input/Input";
-import Select from "../Select/Select";
 import SubmitButton from "../Buttons/SubmitButton.jsx";
+import ResetButton from "../Buttons/ResetButton.jsx";
 import "../../Style/utilities.scss";
 import "./form.scss";
 
-const Form = () => {
-  const [user, setUser] = useState({ username: "", password: "", role: "" });
-  const [error, setError] = useState({ username: "", password: "", role: "" });
-
-  const handleChange = (value, name) => {
-    setUser({ ...user, [`${name}`]: value });
-    setError({ ...error, [`${name}`]: "" });
-  };
-
+const Form = ({ items, values, errors, onSubmit, handleChange, title }) => {
   return (
     <div className="form">
-      <h1>Add user</h1>
-      <form className="form__content">
-        <div className="mb-small">
-          <Input
-            name="username"
-            id="username"
-            type="text"
-            placeholder="username"
-            required
-            handleChange={handleChange}
-            error={error.username}
-          />
-        </div>
+      <h1 className="mb-small">{title}</h1>
+      <form className="form__content" onSubmit={(e) => onSubmit(e)}>
+        {items?.map((item, index) => (
+          <div className="mb-small" key={index}>
+            {item.input === "input" ? (
+              <item.Component
+                value={values[item.name]}
+                name={item.name}
+                id={item.id}
+                type={item.type}
+                placeholder={item.placeholder}
+                required={item.required}
+                handleChange={handleChange}
+                error={errors[item.name]}
+                defaultValue={item.defaultValue}
+              />
+            ) : (
+              <item.Component
+                name={item.name}
+                options={item.roles}
+                handleChange={handleChange}
+                error={errors[item.name]}
+              />
+            )}
+          </div>
+        ))}
 
-        <div className="mb-small">
-          <Input
-            name="password"
-            id="password"
-            type="password"
-            placeholder="password"
-            required
-            handleChange={handleChange}
-            error={error.password}
-          />
-        </div>
-        <div className="mb-small">
-          <Select
-            name="role"
-            handleChange={handleChange}
-            error={error.role}
-            options={[
-              { value: "ADMINISTRATEUR", name: "Admin" },
-              { value: "SIMPLE_USER", name: "user" },
-            ]}
-          />
-        </div>
-
-        <div className="form__submit mt-meduim">
-          <SubmitButton />
+        <div className="form__submit mt-large">
+          <ResetButton text="Reset" />
+          <SubmitButton text="Submit" />
         </div>
       </form>
     </div>

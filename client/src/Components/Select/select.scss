@@ -3,7 +3,7 @@ select {
   outline: none;
   background-color: transparent;
   border: none;
-  padding: 1rem 2rem;
+  padding: 2rem 0.5rem 0.4rem;
   margin: 0;
   width: 100%;
   font-family: inherit;
@@ -17,7 +17,7 @@ select {
   position: relative;
   width: 100%;
   border-bottom: 3px solid var(--grey-color);
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   cursor: pointer;
   line-height: 1.5;

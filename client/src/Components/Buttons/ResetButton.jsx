@@ -1,7 +1,11 @@
 import React from "react";
 
-const ResetButton = () => {
-  return <button className="btn__reset">Reset</button>;
+const ResetButton = ({ text }) => {
+  return (
+    <button className="btn__reset" type="reset">
+      {text}
+    </button>
+  );
 };
 
 export default ResetButton;

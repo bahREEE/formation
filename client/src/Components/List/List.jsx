@@ -5,28 +5,41 @@ import { Link } from "react-router-dom";
 import "../Buttons/button.scss";
 import "./list.scss";
 
-const List = () => {
+const List = ({ items, titles, name, handleEdit, handleDelete }) => {
   return (
     <Fragment>
-      <Link to="/admin" className="btn btn__link">
-        Add to List
+      <Link to="/admin/accounts/ADD" className="btn btn__link">
+        {name}
       </Link>
       <table className="list">
         <thead>
           <tr>
-            <th>Helo</th>
+            {titles.map((title, index) => (
+              <th key={index}>{title.name}</th>
+            ))}
             <th className="list__action">action</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Helmy was here !</td>
-
-            <td className="list__icons">
-              <Edit className=" list__icon list__icon--edit" />
-              <Trash className=" list__icon list__icon--trash" />
-            </td>
-          </tr>
+          {items.map((item) => (
+            <tr key={item.id}>
+              {titles.map((title, index) => (
+                <td key={index}>{item[title.label]}</td>
+              ))}
+              <td className="list__icons">
+                <Edit
+                  className=" list__icon list__icon--edit"
+                  handleEdit={handleEdit}
+                  id={item.id}
+                />
+                <Trash
+                  className=" list__icon list__icon--trash"
+                  handleDelete={handleDelete}
+                  id={item.id}
+                />
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </Fragment>

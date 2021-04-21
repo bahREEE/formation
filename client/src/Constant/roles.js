@@ -1,1 +1,1 @@
-export default ["ADMINISTRATEUR", "SIMPLE_USER"];
+export const Roles = ["ADMINISTRATEUR", "SIMPLE_UTILISATEUR"];

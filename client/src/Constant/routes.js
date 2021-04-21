@@ -1,5 +1,7 @@
-import List from "../Components/List/List";
-import Accounts from "../Pages/Admin/Accounts/Accounts";
+import { Fragment } from "react";
+import Edit from "../assets/svgs/Edit";
+import AddAccount from "../Pages/Admin/Accounts/AddAccount";
+import ListAccounts from "../Pages/Admin/Accounts/ListAccounts";
 import MainAdmin from "../Pages/Admin/MainAdmin";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
@@ -29,9 +31,11 @@ export const MainRoutes = [
 ];
 
 export const AdminRoutes = [
-  { component: Accounts, title: "Accounts", path: "/accounts" },
-  { component: Accounts, title: "Formation", path: "/formations" },
-  { component: Accounts, title: "Settings", path: "/settings" },
-  { component: List, title: "Acceuil", path: "/" },
+  { component: ListAccounts, title: "Accounts", path: "/accounts" },
+  { component: AddAccount, title: "Accounts", path: "/accounts/ADD" },
+  { component: Edit, title: "Accounts", path: "/accounts/EDIT/:id" },
+  { component: ListAccounts, title: "Formation", path: "/formations" },
+  { component: ListAccounts, title: "Settings", path: "/settings" },
+  { component: () => <Fragment />, title: "Acceuil", path: "/" },
 ];
 export const UserRoutes = [];

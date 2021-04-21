@@ -1,8 +1,12 @@
 import React from "react";
 import "./button.scss";
 
-const SubmitButton = () => {
-  return <button className="btn btn__submit">Submit here</button>;
+const SubmitButton = ({ text }) => {
+  return (
+    <button className="btn btn__submit" type="submit">
+      {text}
+    </button>
+  );
 };
 
 export default SubmitButton;

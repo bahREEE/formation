@@ -1,8 +1,8 @@
 import React from "react";
 import Form from "../../../Components/Form/Form";
 
-const Accounts = () => {
+const EditAccount = () => {
   return <Form />;
 };
 
-export default Accounts;
+export default EditAccount;

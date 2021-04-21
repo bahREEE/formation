@@ -1,4 +1,4 @@
-export const users = [
-  { label: "name", name: "name" },
+export const usersList = [
+  { label: "username", name: "name" },
   { label: "role", name: "role" },
 ];
