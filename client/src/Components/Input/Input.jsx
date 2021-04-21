@@ -13,13 +13,13 @@ const Input = ({
   return (
     <div class="form__group">
       <input
-        type="input"
+        type={type}
         className={`form__field  ${error && "form__field--error"}`}
-        placeholder="Name"
-        name="name"
-        id="name"
-        required
-        // onChange={(e) => handleChange(e.target.value, name)}
+        placeholder={name}
+        name={placeholder}
+        id={id}
+        required={required}
+        onChange={(e) => handleChange(e.target.value, name)}
       />
       <label
         for="name"
@@ -27,7 +27,7 @@ const Input = ({
           required && "form__label--required"
         } `}
       >
-        Name
+        {name}
       </label>
       {error && <div className="message__error">{error}</div>}
     </div>
