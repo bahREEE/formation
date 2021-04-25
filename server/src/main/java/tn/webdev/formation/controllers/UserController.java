@@ -31,6 +31,7 @@ public class UserController {
     @Autowired
     private RoleRepository roleRepository;
 
+
     @GetMapping(value = "/")
     public List<AppUser> getusers(){
         return userRepository.findAll();

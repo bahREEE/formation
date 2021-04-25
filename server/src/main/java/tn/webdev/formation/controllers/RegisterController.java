@@ -24,8 +24,6 @@ public class RegisterController {
     @PostMapping(value = "/signup")
     public String register(@RequestBody RegisterRequest registerRequest){
 
-
-
         accountService.saveUser(registerRequest.getUsername(), registerRequest.getPassword(), 
                                 registerRequest.getConfirmedPassword(),registerRequest.getRole());
 
