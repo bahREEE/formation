@@ -17,7 +17,7 @@ public class Pays {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long paysId;
+    private Long id;
 
     private String nom;
 

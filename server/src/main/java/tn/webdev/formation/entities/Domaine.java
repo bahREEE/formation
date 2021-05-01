@@ -18,7 +18,7 @@ public class Domaine {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long domaineId;
+    private Long id;
 
     private String libelle;
 }

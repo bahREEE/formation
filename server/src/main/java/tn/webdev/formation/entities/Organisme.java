@@ -17,7 +17,7 @@ public class Organisme {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orgId;
+    private Long id;
 
     private String libelle;
     

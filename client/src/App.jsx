@@ -37,24 +37,23 @@ const App = () => {
           />
         ))}
 
-        {user && (
-          <Fragment>
-            <HeadBar />
-            <div className="client__container">
-              <Switch>
-                {MainRoutes.map((route, index) => (
-                  <ProtectedRouter
-                    key={index}
-                    path={route.path}
-                    privilege={route.privilege}
-                    component={route.component}
-                    role={user.role}
-                  />
-                ))}
-              </Switch>
-            </div>
-          </Fragment>
-        )}
+        <Fragment>
+          <HeadBar />
+          <div className="client__container">
+            <Switch>
+              {MainRoutes.map((route, index) => (
+                <ProtectedRouter
+                  key={index}
+                  path={route.path}
+                  privilege={route.privilege}
+                  component={route.component}
+                  role={user?.role}
+                />
+              ))}
+            </Switch>
+          </div>
+        </Fragment>
+
         <Redirect from="/" to="/login" />
       </Switch>
     </div>

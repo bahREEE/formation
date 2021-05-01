@@ -1,14 +1,20 @@
 import React, { Fragment } from "react";
 import Trash from "../../assets/svgs/Trash";
 import Edit from "../../assets/svgs/Edit";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../Buttons/button.scss";
 import "./list.scss";
 
-const List = ({ items, titles, name, handleEdit, handleDelete }) => {
+const List = ({ items, titles, name, path, handleDelete }) => {
+  const history = useHistory();
+  const handleEdit = (id) => {
+    history.push(`${path}/EDIT/${id}`);
+  };
+
   return (
     <Fragment>
-      <Link to="/admin/accounts/ADD" className="btn btn__link">
+      <Link to={`${path}/ADD`} className="btn btn__link">
         {name}
       </Link>
       <table className="list">

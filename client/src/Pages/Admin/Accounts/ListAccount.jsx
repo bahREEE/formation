@@ -4,14 +4,12 @@ import Request from "../../../Services/request";
 import { usersList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListAccounts = () => {
+const ListAccount = () => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     try {
       async function fetchData() {
-        // You can await here
         const { data } = await Request("get", adminAPI.USER);
-        //  console.log(data);
         setUsers(
           data.map((user) => {
             return {
@@ -22,7 +20,6 @@ const ListAccounts = () => {
             };
           })
         );
-        // ...
       }
       fetchData();
     } catch (error) {
@@ -32,15 +29,11 @@ const ListAccounts = () => {
 
   const handleDelete = async (id) => {
     try {
-      const { data } = await Request("delete", adminAPI.USER, id);
+      await Request("delete", adminAPI.USER, id);
       setUsers(users.filter((user) => user.id !== id));
-      console.log(data);
     } catch (error) {
       console.log(error.message);
     }
-  };
-  const handleEdit = (id) => {
-    console.log("edit");
   };
   return (
     <Fragment>
@@ -48,11 +41,11 @@ const ListAccounts = () => {
         items={users}
         titles={usersList}
         name="add User"
-        handleEdit={handleEdit}
         handleDelete={handleDelete}
+        path="/admin/accounts"
       />
     </Fragment>
   );
 };
 
-export default ListAccounts;
+export default ListAccount;

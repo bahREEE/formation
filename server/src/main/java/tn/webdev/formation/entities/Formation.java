@@ -19,7 +19,7 @@ public class Formation {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long formationId;
+    private Long id;
 
     private String titre;
 

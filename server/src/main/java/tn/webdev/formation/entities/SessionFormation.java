@@ -23,7 +23,7 @@ public class SessionFormation {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long sessionId;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name="orgId")

@@ -26,7 +26,7 @@ public class Participant {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long participanId;
+    private Long id;
 
     private String type;
 
@@ -39,7 +39,7 @@ public class Participant {
     private Pays pays;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idProfil", referencedColumnName = "idProfil")
+    @JoinColumn(name = "idProfil", referencedColumnName = "id")
     private Profil profil;
 
     @ManyToMany

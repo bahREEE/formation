@@ -20,7 +20,7 @@ public class Formateur {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long formateurId;
+    private Long id;
 
     private String formateurName;
 

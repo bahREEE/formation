@@ -3,7 +3,7 @@ import ResetButton from "../Buttons/ResetButton.jsx";
 import "../../Style/utilities.scss";
 import "./form.scss";
 
-const Form = ({ items, values, errors, onSubmit, handleChange, title }) => {
+const Form = ({ items, errors, onSubmit, handleChange, title }) => {
   return (
     <div className="form">
       <h1 className="mb-small">{title}</h1>
@@ -12,9 +12,9 @@ const Form = ({ items, values, errors, onSubmit, handleChange, title }) => {
           <div className="mb-small" key={index}>
             {item.input === "input" ? (
               <item.Component
-                value={values[item.name]}
                 name={item.name}
                 id={item.id}
+                disabled={item.disabled}
                 type={item.type}
                 placeholder={item.placeholder}
                 required={item.required}
@@ -25,9 +25,11 @@ const Form = ({ items, values, errors, onSubmit, handleChange, title }) => {
             ) : (
               <item.Component
                 name={item.name}
-                options={item.roles}
+                options={item.options}
                 handleChange={handleChange}
                 error={errors[item.name]}
+                defaultText={item.defaultText}
+                defaultValue={item.defaultValue}
               />
             )}
           </div>

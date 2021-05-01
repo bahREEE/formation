@@ -2,35 +2,25 @@ import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
-import { userFORM } from "../../../Constant/Forms/adminForms";
 import { adminAPI } from "../../../Services/api";
+import { countryFORM } from "../../../Constant/Forms/adminForms";
 
-const EditAccount = () => {
+const EditCountry = () => {
   const history = useHistory();
   const { id } = useParams();
-  const [user, setUser] = useState({});
+  const [country, setCountry] = useState({});
   const [defaults, setDefaults] = useState({});
   const [errors, setErrors] = useState({
-    username: "",
-    password: "",
-    role: "",
+    nom: "",
   });
 
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await RequestApi("get", `${adminAPI.USER}${id}`);
-
-        setUser({
-          username: data.username,
-          role: data.roles[0].roleName === "ADMINISTRATEUR" ? "Admin" : "User",
-          password: data.password,
-        });
-
-        setDefaults({
-          username: data.username,
-          role: data.roles[0].roleName === "ADMINISTRATEUR" ? "Admin" : "User",
-          password: data.password,
+        const { data } = await RequestApi("get", `${adminAPI.COUNTRY}${id}`);
+        setDefaults(data);
+        setCountry({
+          nom: data.nom,
         });
       }
       fetchData();
@@ -40,28 +30,17 @@ const EditAccount = () => {
   }, [id]);
 
   const handleChange = (value, name) => {
-    setUser({ ...user, [`${name}`]: value });
+    setCountry({ ...country, [`${name}`]: value });
     setErrors({ ...errors, [`${name}`]: "" });
   };
 
   const checkError = () => {
     let errorsFound = false;
     let generateErrors = {
-      username: "",
-      password: "",
-      role: "",
+      nom: "",
     };
-    if (!user.role) {
-      generateErrors.role = "you need to specify a role!";
-      errorsFound = true;
-    }
 
-    if (user.password.length < 4) {
-      generateErrors.password = "password is weak!";
-      errorsFound = true;
-    }
-
-    if (user.username.length < 4) {
+    if (country.nom.length < 4) {
       generateErrors.username = "username should have at least 4 characters!";
       errorsFound = true;
     }
@@ -74,9 +53,9 @@ const EditAccount = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.USER, "", user);
+        //   const result = await RequestApi("put", adminAPI.COUNTRY, "", country);
 
-        history.push("/admin/accounts");
+        history.push("/admin/countries");
       }
     } catch (error) {
       console.log(error.message);
@@ -87,10 +66,9 @@ const EditAccount = () => {
       onSubmit={onSubmit}
       handleChange={handleChange}
       errors={errors}
-      items={userFORM(defaults)}
-      title="Edit user"
+      items={countryFORM(defaults)}
+      title="Edit Country"
     />
   );
 };
-
-export default EditAccount;
+export default EditCountry;

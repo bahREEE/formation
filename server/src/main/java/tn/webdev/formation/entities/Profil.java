@@ -17,7 +17,7 @@ public class Profil {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idProfil;
+    private Long id;
 
     private String libelle;
 }

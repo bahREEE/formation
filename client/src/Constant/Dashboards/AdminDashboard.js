@@ -19,16 +19,16 @@ export const adminDash = [
   },
   {
     Icon: DashIcon,
-    identif: "formations",
-    name: "Fomrations",
-    url: `${adminDefaultUrl}/formations`,
+    identif: "Countries",
+    name: "Countries",
+    url: `${adminDefaultUrl}/countries`,
   },
 
   {
     Icon: DashIcon,
-    identif: "Settings",
-    name: "Settings",
-    url: `${adminDefaultUrl}/settings`,
+    identif: "Profiles",
+    name: "Profiles",
+    url: `${adminDefaultUrl}/profiles`,
   },
   {
     Icon: DashIcon,

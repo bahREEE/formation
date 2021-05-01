@@ -1,7 +1,7 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
-import { userFORM } from "../../../Constant/Forms/userForm";
+import { userFORM } from "../../../Constant/Forms/adminForms";
 import { adminAPI } from "../../../Services/api";
 import RequestApi from "../.././../Services/request";
 
@@ -49,8 +49,7 @@ const AddAccount = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        // const result = await RequestApi("post", adminAPI.USER, "", user);
-        // console.log(result);
+        const result = await RequestApi("post", adminAPI.USER, "", user);
         history.push("/admin/accounts");
       }
     } catch (error) {
@@ -58,16 +57,13 @@ const AddAccount = () => {
     }
   };
   return (
-    <Fragment>
-      <Form
-        onSubmit={onSubmit}
-        handleChange={handleChange}
-        values={user}
-        errors={errors}
-        items={userFORM}
-        title="Add user"
-      />
-    </Fragment>
+    <Form
+      onSubmit={onSubmit}
+      handleChange={handleChange}
+      errors={errors}
+      items={userFORM({ username: "", password: "", role: "none" })}
+      title="Add user"
+    />
   );
 };
 

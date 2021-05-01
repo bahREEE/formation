@@ -2,7 +2,14 @@ import React, { Fragment } from "react";
 import "./select.scss";
 import "../Input/input.scss";
 
-const Select = ({ error, name, handleChange, options }) => {
+const Select = ({
+  error,
+  name,
+  handleChange,
+  options,
+  defaultText,
+  defaultValue,
+}) => {
   return (
     <Fragment>
       <div className={`select  ${error && "select--error"}`}>
@@ -10,10 +17,10 @@ const Select = ({ error, name, handleChange, options }) => {
           id="standard-select"
           name={name}
           onChange={(e) => handleChange(e.target.value, name)}
-          defaultValue="none"
+          defaultValue={defaultValue}
         >
           <option value="none" disabled hidden>
-            Choose a role...
+            {defaultText}
           </option>
           {options?.map((option, index) => (
             <option key={index} value={option.value}>

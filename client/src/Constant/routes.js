@@ -1,7 +1,17 @@
 import { Fragment } from "react";
-import Edit from "../assets/svgs/Edit";
+
 import AddAccount from "../Pages/Admin/Accounts/AddAccount";
-import ListAccounts from "../Pages/Admin/Accounts/ListAccounts";
+import EditAccount from "../Pages/Admin/Accounts/EditAccount";
+import ListAccount from "../Pages/Admin/Accounts/ListAccount";
+
+import AddCountry from "../Pages/Admin/Countries/AddCountry";
+import EditCountry from "../Pages/Admin/Countries/EditCountry";
+import ListCountry from "../Pages/Admin/Countries/ListCountry";
+
+import ListProfile from "../Pages/Admin/Profiles/ListProfile";
+import AddProfile from "../Pages/Admin/Profiles/AddProfile";
+import EditProfile from "../Pages/Admin/Profiles/EditProfile";
+
 import MainAdmin from "../Pages/Admin/MainAdmin";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
@@ -31,11 +41,35 @@ export const MainRoutes = [
 ];
 
 export const AdminRoutes = [
-  { component: ListAccounts, title: "Accounts", path: "/accounts" },
-  { component: AddAccount, title: "Accounts", path: "/accounts/ADD" },
-  { component: Edit, title: "Accounts", path: "/accounts/EDIT/:id" },
-  { component: ListAccounts, title: "Formation", path: "/formations" },
-  { component: ListAccounts, title: "Settings", path: "/settings" },
+  { component: ListAccount, title: "accounts", path: "/accounts" },
+  { component: AddAccount, title: "accounts add", path: "/accounts/ADD" },
+  {
+    component: EditAccount,
+    title: "accounts edit",
+    path: "/accounts/EDIT/:id",
+  },
+  { component: ListCountry, title: "countries", path: "/countries" },
+  { component: AddCountry, title: "countries add", path: "/countries/ADD" },
+  {
+    component: EditCountry,
+    title: "countries edit",
+    path: "/countries/EDIT/:id",
+  },
+  {
+    component: ListProfile,
+    title: "profiles",
+    path: "/profiles",
+  },
+  {
+    component: AddProfile,
+    title: "profiles add",
+    path: "/profiles/ADD",
+  },
+  {
+    component: EditProfile,
+    title: "profiles edit",
+    path: "/profiles/EDIT/:id",
+  },
   { component: () => <Fragment />, title: "Acceuil", path: "/" },
 ];
 export const UserRoutes = [];
