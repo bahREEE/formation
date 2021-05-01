@@ -1,32 +1,32 @@
 import React, { useState } from "react";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
-import { countryFORM } from "../../../Constant/Forms/adminForms";
+import { domainFORM } from "../../../Constant/Forms/adminForms";
 import { adminAPI } from "../../../Services/api";
 import { useHistory } from "react-router-dom";
 
-const AddCountry = () => {
+const AddDomain = () => {
   const history = useHistory();
-  const [country, setCountry] = useState({
-    nom: "",
+  const [domain, setDomain] = useState({
+    libelle: "",
   });
   const [errors, setErrors] = useState({
-    nom: "",
+    libelle: "",
   });
 
   const handleChange = (value, name) => {
-    setCountry({ ...country, [`${name}`]: value });
+    setDomain({ ...domain, [`${name}`]: value });
     setErrors({ ...errors, [`${name}`]: "" });
   };
 
   const checkError = () => {
     let errorsFound = false;
     let generateErrors = {
-      nom: "",
+      libelle: "",
     };
 
-    if (country.nom.length < 4) {
-      generateErrors.nom = "Country name should have at least 4 characters!";
+    if (domain.libelle.length < 4) {
+      generateErrors.libelle = "Domain name should have at least 4 characters!";
       errorsFound = true;
     }
 
@@ -38,8 +38,8 @@ const AddCountry = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        await RequestApi("post", adminAPI.COUNTRY, "", country);
-        history.push("/admin/countries");
+        await RequestApi("post", adminAPI.DOMAIN, "", domain);
+        history.push("/admin/domains");
       }
     } catch (error) {
       console.log(error.message);
@@ -50,10 +50,10 @@ const AddCountry = () => {
       onSubmit={onSubmit}
       handleChange={handleChange}
       errors={errors}
-      items={countryFORM({ nom: "" })}
-      title="Add Country"
+      items={domainFORM({ libelle: "" })}
+      title="Add domain"
     />
   );
 };
 
-export default AddCountry;
+export default AddDomain;

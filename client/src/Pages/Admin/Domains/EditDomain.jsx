@@ -3,12 +3,12 @@ import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
 import { adminAPI } from "../../../Services/api";
-import { profileFORM } from "../../../Constant/Forms/adminForms";
+import { domainFORM } from "../../../Constant/Forms/adminForms";
 
-const EditProfile = () => {
+const EditDomain = () => {
   const history = useHistory();
   const { id } = useParams();
-  const [profile, setProfile] = useState({});
+  const [domain, setDomain] = useState({});
   const [defaults, setDefaults] = useState({});
   const [errors, setErrors] = useState({
     libelle: "",
@@ -17,9 +17,9 @@ const EditProfile = () => {
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await RequestApi("get", `${adminAPI.PROFILE}${id}`);
+        const { data } = await RequestApi("get", `${adminAPI.DOMAIN}${id}`);
         setDefaults(data);
-        setProfile(data);
+        setDomain(data);
       }
       fetchData();
     } catch (error) {
@@ -28,7 +28,7 @@ const EditProfile = () => {
   }, [id]);
 
   const handleChange = (value, name) => {
-    setProfile({ ...profile, [`${name}`]: value });
+    setDomain({ ...domain, [`${name}`]: value });
     setErrors({ ...errors, [`${name}`]: "" });
   };
 
@@ -38,8 +38,8 @@ const EditProfile = () => {
       libelle: "",
     };
 
-    if (profile.libelle.length < 4) {
-      generateErrors.username = "Profile should have at least 4 characters!";
+    if (domain.libelle.length < 4) {
+      generateErrors.libelle = "Domain should have at least 4 characters!";
       errorsFound = true;
     }
 
@@ -51,9 +51,9 @@ const EditProfile = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.PROFILE, "", profile);
+        //   const result = await RequestApi("put", adminAPI.DOMAIN, "", domain);
 
-        history.push("/admin/profiles");
+        history.push("/admin/domains");
       }
     } catch (error) {
       console.log(error.message);
@@ -64,9 +64,9 @@ const EditProfile = () => {
       onSubmit={onSubmit}
       handleChange={handleChange}
       errors={errors}
-      items={profileFORM(defaults)}
-      title="Edit profile"
+      items={domainFORM(defaults)}
+      title="Edit domain"
     />
   );
 };
-export default EditProfile;
+export default EditDomain;

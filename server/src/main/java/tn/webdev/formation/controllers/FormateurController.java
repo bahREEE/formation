@@ -18,7 +18,7 @@ public class FormateurController {
     @Autowired
     private FormateurRepository formateurRepository;
 
-    @GetMapping(value = "/formateurs")
+    @GetMapping(value = "/")
     public List<Formateur> getformateurs(){
         return formateurRepository.findAll();
     }

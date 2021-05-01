@@ -3,12 +3,12 @@ import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
 import { adminAPI } from "../../../Services/api";
-import { profileFORM } from "../../../Constant/Forms/adminForms";
+import { organizationFORM } from "../../../Constant/Forms/adminForms";
 
-const EditProfile = () => {
+const EditOrganization = () => {
   const history = useHistory();
   const { id } = useParams();
-  const [profile, setProfile] = useState({});
+  const [organization, setOrganization] = useState({});
   const [defaults, setDefaults] = useState({});
   const [errors, setErrors] = useState({
     libelle: "",
@@ -17,9 +17,12 @@ const EditProfile = () => {
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await RequestApi("get", `${adminAPI.PROFILE}${id}`);
+        const { data } = await RequestApi(
+          "get",
+          `${adminAPI.ORGANIZATION}${id}`
+        );
         setDefaults(data);
-        setProfile(data);
+        setOrganization(data);
       }
       fetchData();
     } catch (error) {
@@ -28,7 +31,7 @@ const EditProfile = () => {
   }, [id]);
 
   const handleChange = (value, name) => {
-    setProfile({ ...profile, [`${name}`]: value });
+    setOrganization({ ...organization, [`${name}`]: value });
     setErrors({ ...errors, [`${name}`]: "" });
   };
 
@@ -38,8 +41,9 @@ const EditProfile = () => {
       libelle: "",
     };
 
-    if (profile.libelle.length < 4) {
-      generateErrors.username = "Profile should have at least 4 characters!";
+    if (organization.libelle.length < 4) {
+      generateErrors.libelle =
+        "Organization should have at least 4 characters!";
       errorsFound = true;
     }
 
@@ -51,9 +55,9 @@ const EditProfile = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.PROFILE, "", profile);
-
-        history.push("/admin/profiles");
+        //   const result = await RequestApi("put", adminAPI.ORGANIZATION, "", organization);
+        console.log("eh");
+        history.push("/admin/organizations");
       }
     } catch (error) {
       console.log(error.message);
@@ -64,9 +68,10 @@ const EditProfile = () => {
       onSubmit={onSubmit}
       handleChange={handleChange}
       errors={errors}
-      items={profileFORM(defaults)}
-      title="Edit profile"
+      items={organizationFORM(defaults)}
+      title="Edit organization"
     />
   );
 };
-export default EditProfile;
+
+export default EditOrganization;

@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../Components/List/List";
 import Request from "../../../Services/request";
-import { countryList } from "../../../Constant/Lists/adminLists";
+import { domainList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListCountry = () => {
-  const [countries, setCountries] = useState([]);
+const ListDomain = () => {
+  const [domains, setDomains] = useState([]);
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await Request("get", adminAPI.COUNTRY);
-        setCountries(
-          data.map((country) => {
+        const { data } = await Request("get", adminAPI.DOMAIN);
+        setDomains(
+          data.map((domain) => {
             return {
-              id: country.id,
-              nom: country.nom,
+              id: domain.id,
+              libelle: domain.libelle,
             };
           })
         );
@@ -27,8 +27,8 @@ const ListCountry = () => {
 
   const handleDelete = async (id) => {
     try {
-      await Request("delete", adminAPI.COUNTRY, id);
-      setCountries(countries.filter((country) => country.id !== id));
+      await Request("delete", adminAPI.DOMAIN, id);
+      setDomains(domains.filter((domain) => domain.id !== id));
     } catch (error) {
       console.log(error.message);
     }
@@ -36,13 +36,13 @@ const ListCountry = () => {
 
   return (
     <List
-      items={countries}
-      titles={countryList}
-      name="add Country"
+      items={domains}
+      titles={domainList}
+      name="add domain"
       handleDelete={handleDelete}
-      path="/admin/countries"
+      path="/admin/domains"
     />
   );
 };
 
-export default ListCountry;
+export default ListDomain;

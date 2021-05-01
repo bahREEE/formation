@@ -71,3 +71,33 @@ export const profileFORM = (defaultValues) => {
     },
   ];
 };
+
+export const domainFORM = (defaultValues) => {
+  return [
+    {
+      input: "input",
+      name: "libelle",
+      id: "domain",
+      type: "text",
+      placeholder: "domain",
+      required: true,
+      defaultValue: defaultValues["libelle"],
+      Component: Input,
+    },
+  ];
+};
+
+export const organizationFORM = (defaultValues) => {
+  return [
+    {
+      input: "input",
+      name: "libelle",
+      id: "organization",
+      type: "text",
+      placeholder: "organization",
+      required: true,
+      defaultValue: defaultValues["libelle"],
+      Component: Input,
+    },
+  ];
+};

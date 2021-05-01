@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../../../Components/List/List";
-import Request from "../../../Services/request";
+import RequestAPI from "../../../Services/request";
 import { usersList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
@@ -9,7 +9,7 @@ const ListAccount = () => {
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await Request("get", adminAPI.USER);
+        const { data } = await RequestAPI("get", adminAPI.USER);
         setUsers(
           data.map((user) => {
             return {
@@ -29,22 +29,20 @@ const ListAccount = () => {
 
   const handleDelete = async (id) => {
     try {
-      await Request("delete", adminAPI.USER, id);
+      await RequestAPI("delete", adminAPI.USER, id);
       setUsers(users.filter((user) => user.id !== id));
     } catch (error) {
       console.log(error.message);
     }
   };
   return (
-    <Fragment>
-      <List
-        items={users}
-        titles={usersList}
-        name="add User"
-        handleDelete={handleDelete}
-        path="/admin/accounts"
-      />
-    </Fragment>
+    <List
+      items={users}
+      titles={usersList}
+      name="add User"
+      handleDelete={handleDelete}
+      path="/admin/accounts"
+    />
   );
 };
 

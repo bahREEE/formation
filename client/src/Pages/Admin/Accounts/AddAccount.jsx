@@ -49,7 +49,7 @@ const AddAccount = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        const result = await RequestApi("post", adminAPI.USER, "", user);
+        await RequestApi("post", adminAPI.USER, "", user);
         history.push("/admin/accounts");
       }
     } catch (error) {

@@ -1,22 +1,35 @@
 import React, { Fragment } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
+import Container from "../../Components/Container/Container";
 import Dashboard from "../../Components/Dashboard/Dashboard";
-import ListAccount from "../Admin/Accounts/ListAccount";
+import {
+  userDash,
+  userDefaultIdentif,
+} from "../../Constant/Dashboards/UserDashboard";
+import { UserRoutes } from "../../Constant/routes";
 
 const MainUser = () => {
   return (
     <Fragment>
-      <Dashboard />
+      <Dashboard dashboard={userDash} DefaultIdentif={userDefaultIdentif} />
       <main className="main">
         <Switch>
-          <Route path="/user/accounts" exact component={ListAccount} />
-          <Route
-            path="/user/formations"
-            exact
-            render={() => <h1>Formations</h1>}
-          />
-          <Route path="/" render={() => <h1>Acceuil User</h1>} />
-          <Redirect to="/" />
+          {UserRoutes.map((route, index) => (
+            <Route
+              key={index}
+              path={`/user${route.path}`}
+              exact
+              render={(props) => (
+                <Container
+                  title={route.title}
+                  component={route.component}
+                  {...props}
+                />
+              )}
+            />
+          ))}
+
+          <Redirect to="/user" />
         </Switch>
       </main>
     </Fragment>

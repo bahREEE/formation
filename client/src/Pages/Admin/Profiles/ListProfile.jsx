@@ -3,10 +3,8 @@ import List from "../../../Components/List/List";
 import Request from "../../../Services/request";
 import { profileList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
-import { useHistory } from "react-router-dom";
 
 const ListProfile = () => {
-  const history = useHistory();
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
     try {

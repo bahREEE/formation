@@ -19,9 +19,7 @@ const EditCountry = () => {
       async function fetchData() {
         const { data } = await RequestApi("get", `${adminAPI.COUNTRY}${id}`);
         setDefaults(data);
-        setCountry({
-          nom: data.nom,
-        });
+        setCountry(data);
       }
       fetchData();
     } catch (error) {
@@ -41,7 +39,7 @@ const EditCountry = () => {
     };
 
     if (country.nom.length < 4) {
-      generateErrors.username = "username should have at least 4 characters!";
+      generateErrors.nom = "Country should have at least 4 characters!";
       errorsFound = true;
     }
 

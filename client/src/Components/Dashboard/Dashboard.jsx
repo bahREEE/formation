@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import DashItem from "./DashItem";
 import DashItemDraggble from "./DashItemDraggable";
-import {
-  adminDefaultIdentif,
-  adminDash,
-} from "../../Constant/Dashboards/AdminDashboard";
 import "./dashboard.scss";
 
-const Dashboard = () => {
-  const [active, setActive] = useState(adminDefaultIdentif);
+const Dashboard = ({ dashboard, DefaultIdentif }) => {
+  const [active, setActive] = useState(DefaultIdentif);
   const handleActive = (newActive) => {
     setActive(newActive);
   };
   return (
     <nav className="dashboard">
       <ul className="dashboard__list">
-        {adminDash.map((item, index) =>
+        {dashboard.map((item, index) =>
           item.subList ? (
             <DashItemDraggble
               key={index}

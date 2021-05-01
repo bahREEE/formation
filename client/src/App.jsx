@@ -10,7 +10,7 @@ const App = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const client = { username: "bahri", role: "admin" };
+    const client = { username: "bahri", role: "user" };
     localStorage.setItem("client", JSON.stringify(client));
 
     switch (client.role) {
