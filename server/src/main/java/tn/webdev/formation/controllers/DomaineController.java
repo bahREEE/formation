@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.springframework.web.client.HttpClientErrorException;
 import tn.webdev.formation.dao.DomaineRepository;
 import tn.webdev.formation.entities.Domaine;
 
@@ -32,6 +33,17 @@ public class DomaineController {
     public ResponseEntity<String> adddomaine(@RequestBody Domaine domaine){
         domaineRepository.save(domaine);
         return new ResponseEntity<>("Domaine added successfully", HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updatedomaine(@RequestBody Domaine domaine){
+        if(domaine.getId()==null)
+            return new ResponseEntity<>("No domaine provided",HttpStatus.BAD_REQUEST);
+        if(domaineRepository.findById(domaine.getId())==null)
+            return new ResponseEntity<>("No domaine with the provided id",HttpStatus.BAD_REQUEST);
+
+        domaineRepository.save(domaine);
+        return new ResponseEntity<>("Domaine updated successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/")

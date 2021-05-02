@@ -2,6 +2,7 @@ package tn.webdev.formation.controllers;
 
 import org.springframework.web.bind.annotation.*;
 import tn.webdev.formation.dao.SessionFormationRepository;
+import tn.webdev.formation.entities.Profil;
 import tn.webdev.formation.entities.SessionFormation;
 
 import java.util.List;
@@ -33,6 +34,20 @@ public class SessionController {
         sessionFormationRepository.save(session);
         return new ResponseEntity<>("Session added successfully", HttpStatus.OK);
     }
+
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updateFormateur(@RequestBody SessionFormation session){
+        if(session.getId()==null)
+            return new ResponseEntity<>("No session provided",HttpStatus.BAD_REQUEST);
+        if(sessionFormationRepository.findById(session.getId())==null)
+            return new ResponseEntity<>("No session with the provided id",HttpStatus.BAD_REQUEST);
+
+        sessionFormationRepository.save(session);
+        return new ResponseEntity<>("session updated successfully", HttpStatus.OK);
+    }
+
+
+
 
     @DeleteMapping(value = "/")
     public ResponseEntity<String> deleteallsessions(){

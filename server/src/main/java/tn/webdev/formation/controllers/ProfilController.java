@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import tn.webdev.formation.dao.ProfilRepository;
+import tn.webdev.formation.entities.Pays;
 import tn.webdev.formation.entities.Profil;
 
 @RestController
@@ -34,6 +35,19 @@ public class ProfilController {
         profilRepository.save(profil);
         return new ResponseEntity<>("Profil added successfully", HttpStatus.OK);
     }
+
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updateFormateur(@RequestBody Profil profil){
+        if(profil.getId()==null)
+            return new ResponseEntity<>("No profile provided",HttpStatus.BAD_REQUEST);
+        if(profilRepository.findById(profil.getId())==null)
+            return new ResponseEntity<>("No profile with the provided id",HttpStatus.BAD_REQUEST);
+
+        profilRepository.save(profil);
+        return new ResponseEntity<>("profile updated successfully", HttpStatus.OK);
+    }
+
+
 
     @DeleteMapping(value = "/")
     public ResponseEntity<String> deleteallprofils(){

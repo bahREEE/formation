@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import tn.webdev.formation.dao.ParticipantRepository;
+import tn.webdev.formation.entities.Organisme;
 import tn.webdev.formation.entities.Participant;
 
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,17 @@ public class ParticipantController {
     public ResponseEntity<String> addparticipant(@RequestBody Participant participant){
         participantRepository.save(participant);
         return new ResponseEntity<>("Participant added successfully", HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updateFormateur(@RequestBody Participant participant){
+        if(participant.getId()==null)
+            return new ResponseEntity<>("No participant provided",HttpStatus.BAD_REQUEST);
+        if(participantRepository.findById(participant.getId())==null)
+            return new ResponseEntity<>("No participant with the provided id",HttpStatus.BAD_REQUEST);
+
+        participantRepository.save(participant);
+        return new ResponseEntity<>("participant updated successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/")

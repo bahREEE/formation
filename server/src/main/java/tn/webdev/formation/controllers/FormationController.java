@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import tn.webdev.formation.dao.FormationRepository;
+import tn.webdev.formation.entities.Formateur;
 import tn.webdev.formation.entities.Formation;
 
 @RestController
@@ -33,6 +34,20 @@ public class FormationController {
         formationRepository.save(formation);
         return new ResponseEntity<>("Formation added successfully", HttpStatus.OK);
     }
+
+
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updateFormateur(@RequestBody Formation formation){
+        if(formation.getId()==null)
+            return new ResponseEntity<>("No formation provided",HttpStatus.BAD_REQUEST);
+        if(formationRepository.findById(formation.getId())==null)
+            return new ResponseEntity<>("No formation with the provided id",HttpStatus.BAD_REQUEST);
+
+        formationRepository.save(formation);
+        return new ResponseEntity<>("formation updated successfully", HttpStatus.OK);
+    }
+
+
 
     @DeleteMapping(value = "/")
     public ResponseEntity<String> deleteallformations(){

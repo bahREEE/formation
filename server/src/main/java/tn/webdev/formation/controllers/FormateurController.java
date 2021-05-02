@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import tn.webdev.formation.dao.FormateurRepository;
+import tn.webdev.formation.entities.Domaine;
 import tn.webdev.formation.entities.Formateur;
 
 @RestController
@@ -33,6 +34,19 @@ public class FormateurController {
         formateurRepository.save(formateur);
         return new ResponseEntity<>("Formateur added successfully", HttpStatus.OK);
     }
+
+    @PutMapping(value = "/")
+    public ResponseEntity<String> updateFormateur(@RequestBody Formateur formateur){
+        if(formateur.getId()==null)
+            return new ResponseEntity<>("No formateur provided",HttpStatus.BAD_REQUEST);
+        if(formateurRepository.findById(formateur.getId())==null)
+            return new ResponseEntity<>("No formateur with the provided id",HttpStatus.BAD_REQUEST);
+
+        formateurRepository.save(formateur);
+        return new ResponseEntity<>("formateur updated successfully", HttpStatus.OK);
+    }
+
+
 
     @DeleteMapping(value = "/")
     public ResponseEntity<String> deleteallformateur(){

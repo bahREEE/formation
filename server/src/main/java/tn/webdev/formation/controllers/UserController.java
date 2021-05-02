@@ -15,6 +15,7 @@ import tn.webdev.formation.dto.UserRequest;
 import tn.webdev.formation.entities.AppRole;
 import tn.webdev.formation.entities.AppUser;
 import tn.webdev.formation.entities.ERole;
+import tn.webdev.formation.entities.SessionFormation;
 
 @RestController
 @RequestMapping("/users")
@@ -53,11 +54,16 @@ public class UserController {
         return new ResponseEntity<>("User added successfully", HttpStatus.OK);
     }
 
+
     @PutMapping(value = "/")
-    public ResponseEntity<String> updateuser( @RequestBody AppUser user){
-       // user.setId(id);
+    public ResponseEntity<String> updateFormateur(@RequestBody  AppUser user){
+        if(user.getId()==null)
+            return new ResponseEntity<>("No user provided",HttpStatus.BAD_REQUEST);
+        if(userRepository.findById(user.getId())==null)
+            return new ResponseEntity<>("No user with the provided id",HttpStatus.BAD_REQUEST);
+
         userRepository.save(user);
-        return new ResponseEntity<>("User updated successfully !", HttpStatus.OK);
+        return new ResponseEntity<>("user updated successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/")
