@@ -51,8 +51,7 @@ const EditCountry = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.COUNTRY, "", country);
-
+        await RequestApi("put", adminAPI.COUNTRY, "", country);
         history.push("/admin/countries");
       }
     } catch (error) {

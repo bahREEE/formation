@@ -51,7 +51,7 @@ const EditDomain = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.DOMAIN, "", domain);
+        await RequestApi("put", adminAPI.DOMAIN, "", domain);
 
         history.push("/admin/domains");
       }

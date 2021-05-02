@@ -12,7 +12,7 @@ html {
 
 :root {
   --error-color: #fe4066;
-  --main-color: #081a7e;
+  --main-color: #02448f;
   --title-color: #2f302f;
   --grey-color: #8c8889;
 }
@@ -25,6 +25,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   line-height: 1.5;
+
+  &::selection {
+    background-color: var(--main-color);
+  }
 
   &::-webkit-scrollbar {
     width: 10px;

@@ -51,8 +51,7 @@ const EditProfile = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.PROFILE, "", profile);
-
+        await RequestApi("put", adminAPI.PROFILE, "", profile);
         history.push("/admin/profiles");
       }
     } catch (error) {

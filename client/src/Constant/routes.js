@@ -54,17 +54,17 @@ export const MainRoutes = [
 
 export const AdminRoutes = [
   { component: ListAccount, title: "accounts", path: "/accounts" },
-  { component: AddAccount, title: "accounts add", path: "/accounts/ADD" },
+  { component: AddAccount, title: "accounts", path: "/accounts/ADD" },
   {
     component: EditAccount,
-    title: "accounts edit",
+    title: "accounts",
     path: "/accounts/EDIT/:id",
   },
   { component: ListCountry, title: "countries", path: "/countries" },
-  { component: AddCountry, title: "countries add", path: "/countries/ADD" },
+  { component: AddCountry, title: "countries", path: "/countries/ADD" },
   {
     component: EditCountry,
-    title: "countries edit",
+    title: "countries",
     path: "/countries/EDIT/:id",
   },
   {
@@ -74,12 +74,12 @@ export const AdminRoutes = [
   },
   {
     component: AddProfile,
-    title: "profiles add",
+    title: "profiles",
     path: "/profiles/ADD",
   },
   {
     component: EditProfile,
-    title: "profiles edit",
+    title: "profiles",
     path: "/profiles/EDIT/:id",
   },
   {
@@ -89,12 +89,12 @@ export const AdminRoutes = [
   },
   {
     component: AddDomain,
-    title: "domains add",
+    title: "domains",
     path: "/domains/ADD",
   },
   {
     component: EditDomain,
-    title: "domains edit",
+    title: "domains",
     path: "/domains/EDIT/:id",
   },
   {
@@ -104,12 +104,12 @@ export const AdminRoutes = [
   },
   {
     component: AddOrganization,
-    title: "organizations add",
+    title: "organizations",
     path: "/organizations/ADD",
   },
   {
     component: EditOrganization,
-    title: "organizations edit",
+    title: "organizations",
     path: "/organizations/EDIT/:id",
   },
   { component: () => <Fragment />, title: "Acceuil", path: "/" },
@@ -122,12 +122,12 @@ export const UserRoutes = [
   },
   {
     component: AddFormateur,
-    title: "formateurs add",
+    title: "formateurs",
     path: "/formateurs/ADD",
   },
   {
     component: EditFormateur,
-    title: "formateurs edit",
+    title: "formateurs",
     path: "/formateurs/EDIT/:id",
   },
   { component: () => <Fragment />, title: "Acceuil", path: "/" },

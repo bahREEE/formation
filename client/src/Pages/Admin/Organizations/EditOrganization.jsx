@@ -55,7 +55,7 @@ const EditOrganization = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.ORGANIZATION, "", organization);
+        await RequestApi("put", adminAPI.ORGANIZATION, "", organization);
         console.log("eh");
         history.push("/admin/organizations");
       }
