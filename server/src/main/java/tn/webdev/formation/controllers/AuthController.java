@@ -31,7 +31,7 @@ public class AuthController {
     @PostMapping(value = "/login")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
-
+        System.out.println("hello");
         Authentication authenticate = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.getUsername(),loginRequest.getPassword()));
         User user = (User) userDetails.loadUserByUsername(loginRequest.getUsername());
         SecurityContextHolder.getContext().setAuthentication(authenticate);

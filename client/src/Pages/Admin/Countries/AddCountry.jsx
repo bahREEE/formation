@@ -52,6 +52,7 @@ const AddCountry = () => {
       errors={errors}
       items={countryFORM({ nom: "" })}
       title="Add Country"
+      rest
     />
   );
 };

@@ -63,6 +63,7 @@ const AddAccount = () => {
       errors={errors}
       items={userFORM({ username: "", password: "", role: "none" })}
       title="Add user"
+      rest
     />
   );
 };

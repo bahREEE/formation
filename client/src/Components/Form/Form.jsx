@@ -3,7 +3,7 @@ import ResetButton from "../Buttons/ResetButton.jsx";
 import "../../Style/utilities.scss";
 import "./form.scss";
 
-const Form = ({ items, errors, onSubmit, handleChange, title }) => {
+const Form = ({ items, errors, onSubmit, handleChange, title, reset }) => {
   return (
     <div className="form">
       <h1 className="mb-small">{title}</h1>
@@ -36,7 +36,7 @@ const Form = ({ items, errors, onSubmit, handleChange, title }) => {
         ))}
 
         <div className="form__submit mt-large">
-          <ResetButton text="Reset" />
+          {reset && <ResetButton text="Reset" />}
           <SubmitButton text="Submit" />
         </div>
       </form>

@@ -89,6 +89,7 @@ const EditAccount = () => {
       errors={errors}
       items={userFORM(defaults)}
       title="Edit user"
+      rest
     />
   );
 };

@@ -52,6 +52,7 @@ const AddDomain = () => {
       errors={errors}
       items={domainFORM({ libelle: "" })}
       title="Add domain"
+      rest
     />
   );
 };

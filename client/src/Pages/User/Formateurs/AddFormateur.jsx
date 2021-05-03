@@ -121,6 +121,7 @@ const AddFormateur = () => {
         organizations
       )}
       title="Add formateur"
+      rest
     />
   );
 };

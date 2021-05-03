@@ -42,13 +42,11 @@ const Login = () => {
 
     try {
       if (!checkError()) {
-        const {
-          data: { user, token },
-        } = await RequestApi("post", login.LOGIN, "", client);
-        //  console.log(user, token);
-        localStorage.setItem("user", JSON.stringify(user));
-        localStorage.setItem("token", `Bearer ${token}`);
-        switch (user.authorities[0].authority) {
+        const { data } = await RequestApi("post", login.LOGIN, "", client);
+        console.log(data);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        localStorage.setItem("token", `Bearer ${data.token}`);
+        switch (data.user.authorities[0].authority) {
           case "ADMINISTRATEUR":
             history.push("/admin");
             break;
@@ -61,7 +59,10 @@ const Login = () => {
         }
       }
     } catch (error) {
-      console.log(error.message);
+      setErrors({
+        username: "Check your informations!!",
+        password: "Check your informations!!",
+      });
     }
   };
   return (
@@ -74,7 +75,6 @@ const Login = () => {
             errors={errors}
             onSubmit={onSubmit}
             handleChange={handleChange}
-            values={client}
           />
         </div>
       </div>

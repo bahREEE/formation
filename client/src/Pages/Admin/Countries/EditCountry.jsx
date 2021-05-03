@@ -65,6 +65,7 @@ const EditCountry = () => {
       errors={errors}
       items={countryFORM(defaults)}
       title="Edit Country"
+      rest
     />
   );
 };
