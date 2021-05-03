@@ -43,7 +43,7 @@ const Login = () => {
     try {
       if (!checkError()) {
         const { data } = await RequestApi("post", login.LOGIN, "", client);
-        console.log(data);
+        //  console.log(data);
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", `Bearer ${data.token}`);
         switch (data.user.authorities[0].authority) {
