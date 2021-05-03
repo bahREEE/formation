@@ -28,7 +28,7 @@ public class AuthController {
     @Autowired
     private UserDetailsServiceImpl userDetails;
 
-    @PostMapping(value = "/login")
+    @PostMapping(value = "/login/")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public AuthenticationResponse login(@RequestBody LoginRequest loginRequest){
         System.out.println("hello");
