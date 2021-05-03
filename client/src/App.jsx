@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import { Switch, Redirect } from "react-router-dom";
 import ProtectedRouter from "./Routers/ProtectedRouter";
 import UnProtectedRouter from "./Routers/UnProtectedRouter";
@@ -7,23 +7,6 @@ import { AuthenticateRouters, MainRoutes } from "./Constant/routes";
 import "./App.scss";
 
 const App = () => {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const client = { username: "bahri", role: "usaer" };
-    localStorage.setItem("client", JSON.stringify(client));
-
-    switch (client.role) {
-      case "admin":
-      case "user":
-        setUser(client);
-        break;
-      default:
-        setUser(null);
-        break;
-    }
-  }, []);
-
   return (
     <div className="App">
       <Switch>
@@ -33,26 +16,24 @@ const App = () => {
             component={route.component}
             path={route.path}
             exact
-            user={user}
           />
         ))}
 
-        <Fragment>
-          <HeadBar />
-          <div className="client__container">
-            <Switch>
-              {MainRoutes.map((route, index) => (
-                <ProtectedRouter
-                  key={index}
-                  path={route.path}
-                  privilege={route.privilege}
-                  component={route.component}
-                  role={user?.role}
-                />
-              ))}
-            </Switch>
-          </div>
-        </Fragment>
+        {MainRoutes.map(({ path, privilege, component: Component }, index) => (
+          <ProtectedRouter
+            key={index}
+            path={path}
+            privilege={privilege}
+            component={() => (
+              <Fragment>
+                <HeadBar />
+                <div className="client__container">
+                  <Component />
+                </div>
+              </Fragment>
+            )}
+          />
+        ))}
 
         <Redirect from="/" to="/login" />
       </Switch>

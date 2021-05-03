@@ -47,9 +47,9 @@ export const MainRoutes = [
   {
     path: `${adminPath}`,
     component: MainAdmin,
-    privilege: "admin",
+    privilege: "ADMINISTRATEUR",
   },
-  { path: `${userPath}`, component: MainUser, privilege: "user" },
+  { path: `${userPath}`, component: MainUser, privilege: "SIMPLE_UTILISATEUR" },
 ];
 
 export const AdminRoutes = [

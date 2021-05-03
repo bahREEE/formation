@@ -1,0 +1,21 @@
+.login {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    width: 30%;
+    height: 60%;
+    padding: 5rem 3rem;
+    box-shadow: 0 1.5rem 4rem rgba(#000000, 0.3);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__form {
+    flex: 1;
+  }
+}

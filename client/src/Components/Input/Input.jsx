@@ -11,6 +11,7 @@ const Input = ({
   required,
   defaultValue,
   disabled,
+  value,
 }) => {
   return (
     <div className="form__group">

@@ -6,7 +6,14 @@ const HeadBar = () => {
   return (
     <div className="headbar">
       <h1 className="headbar__logo">Formation</h1>
-      <Link to="/admin" className="headbar__logout">
+      <Link
+        to="/login"
+        className="headbar__logout"
+        onClick={() => {
+          localStorage.clear();
+          console.log("byr");
+        }}
+      >
         Logout
       </Link>
     </div>

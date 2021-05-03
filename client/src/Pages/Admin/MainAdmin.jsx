@@ -10,6 +10,7 @@ import {
 import "./main.scss";
 
 const MainAdmin = () => {
+  console.log("main admin");
   return (
     <Fragment>
       <Dashboard dashboard={adminDash} DefaultIdentif={adminDefaultIdentif} />

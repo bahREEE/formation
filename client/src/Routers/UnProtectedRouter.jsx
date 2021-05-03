@@ -1,20 +1,24 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 
-const UnProtectedRouter = ({ component: Component, user, rest }) => {
+const UnProtectedRouter = ({ component: Component, rest }) => {
+  const user = JSON.parse(localStorage.getItem("user"));
   const redirectPath = () => {
-    if (!user) return "/login";
-    if (user.role === "admin") return "/admin";
-    if (user.role === "user") return "/user";
-    return "/login";
+    switch (user.authorities[0].authority) {
+      case "ADMINISTRATEUR":
+        return <Redirect to="/admin" />;
+
+      case "SIMPLE_UTILISATEUR":
+        return <Redirect to="/user" />;
+      default:
+        return <Redirect to="/login" />;
+    }
   };
 
   return (
     <Route
       {...rest}
-      render={(props) =>
-        !user ? <Component {...props} /> : <Redirect to={redirectPath()} />
-      }
+      render={(props) => (!user ? <Component {...props} /> : redirectPath())}
     />
   );
 };
