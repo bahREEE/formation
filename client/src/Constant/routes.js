@@ -29,6 +29,10 @@ import ListFormateur from "../Pages/User/Formateurs/ListFormateur";
 import EditFormateur from "../Pages/User/Formateurs/EditFormateur";
 import AddFormateur from "../Pages/User/Formateurs/AddFormateur";
 
+import AddFormation from "../Pages/User/Formations/AddFormation";
+import EditForamtion from "../Pages/User/Formations/EditFormation";
+import ListFormation from "../Pages/User/Formations/ListFormation";
+
 const adminPath = "/admin";
 const userPath = "/user";
 
@@ -129,6 +133,21 @@ export const UserRoutes = [
     component: EditFormateur,
     title: "formateurs",
     path: "/formateurs/EDIT/:id",
+  },
+  {
+    component: AddFormation,
+    title: "formations",
+    path: "/formations/ADD",
+  },
+  {
+    component: EditForamtion,
+    title: "formations",
+    path: "/formations/EDIT/:id",
+  },
+  {
+    component: ListFormation,
+    title: "formations",
+    path: "/formations",
   },
   { component: () => <Fragment />, title: "Acceuil", path: "/" },
 ];

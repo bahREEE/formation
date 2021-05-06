@@ -23,13 +23,13 @@ const EditAccount = () => {
 
         setUser({
           username: data.username,
-          role: data.roles[0].roleName === "ADMINISTRATEUR" ? "Admin" : "User",
+          role: data.roles[0].roleName,
           password: data.password,
         });
 
         setDefaults({
           username: data.username,
-          role: data.roles[0].roleName === "ADMINISTRATEUR" ? "Admin" : "User",
+          role: data.roles[0].roleName,
           password: data.password,
         });
       }
@@ -89,7 +89,7 @@ const EditAccount = () => {
       errors={errors}
       items={userFORM(defaults)}
       title="Edit user"
-      rest
+      reset
     />
   );
 };

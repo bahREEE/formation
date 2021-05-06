@@ -17,6 +17,7 @@ const ListFormateur = () => {
               fullName: `${formateur.formateurLastname}  ${formateur.formateurName}`,
               email: formateur.email,
               phone: formateur.tel,
+              type: formateur.type,
               org: formateur.org.libelle,
             };
           })

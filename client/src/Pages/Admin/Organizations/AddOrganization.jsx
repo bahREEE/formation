@@ -53,7 +53,7 @@ const AddOrganization = () => {
       errors={errors}
       items={organizationFORM({ libelle: "" })}
       title="Add organization"
-      rest
+      reset
     />
   );
 };

@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export default async (methode, url, id = "", body = null) => {
+const request = async (methode, url, id = "", body = null) => {
   const token = localStorage.getItem("token");
-  // console.log(token);
+  console.log(body);
   switch (methode) {
     case "get":
     case "delete":
@@ -24,3 +24,5 @@ export default async (methode, url, id = "", body = null) => {
       throw new Error("no sucha request !");
   }
 };
+
+export default request;

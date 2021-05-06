@@ -31,6 +31,7 @@ public class FormationController {
 
     @PostMapping(value = "/")
     public ResponseEntity<String> addformation(@RequestBody Formation formation){
+        System.out.println(formation.getDomaine());
         formationRepository.save(formation);
         return new ResponseEntity<>("Formation added successfully", HttpStatus.OK);
     }

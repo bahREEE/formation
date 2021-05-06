@@ -15,7 +15,7 @@ const AddFormateur = () => {
     email: "",
     tel: "",
     type: "",
-    org: {},
+    org: null,
   });
   const [errors, setErrors] = useState({
     formateurName: "",
@@ -75,11 +75,12 @@ const AddFormateur = () => {
       errorsFound = true;
     }
 
-    if (
-      (formateur.tel.length < 8 || formateur.tel.length > 8) &&
-      isNaN(formateur.tel)
-    ) {
+    if (formateur.tel.length < 8 || formateur.tel.length > 8) {
       generateErrors.tel = "Check your phone number!";
+      errorsFound = true;
+    }
+    if (isNaN(formateur.tel)) {
+      generateErrors.tel = "phone must be 8 digits !";
       errorsFound = true;
     }
 
@@ -89,15 +90,14 @@ const AddFormateur = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setFormateur({
-      ...formateur,
-      org: JSON.parse(formateur.org),
-      tel: parseInt(formateur.tel),
-    });
 
     try {
       if (!checkError()) {
-        await RequestApi("post", userAPI.FORMATEUR, "", formateur);
+        await RequestApi("post", userAPI.FORMATEUR, "", {
+          ...formateur,
+          org: JSON.parse(formateur.org),
+          tel: parseInt(formateur.tel),
+        });
         history.push("/user/formateurs");
       }
     } catch (error) {
@@ -121,7 +121,7 @@ const AddFormateur = () => {
         organizations
       )}
       title="Add formateur"
-      rest
+      reset
     />
   );
 };

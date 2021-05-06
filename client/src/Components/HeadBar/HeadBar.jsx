@@ -11,7 +11,6 @@ const HeadBar = () => {
         className="headbar__logout"
         onClick={() => {
           localStorage.clear();
-          console.log("byr");
         }}
       >
         Logout

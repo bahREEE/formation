@@ -19,11 +19,20 @@ const Select = ({
           onChange={(e) => handleChange(e.target.value, name)}
           defaultValue={defaultValue}
         >
-          <option value="none" disabled hidden>
+          <option
+            value="none"
+            disabled
+            hidden
+            selected={defaultValue === "none"}
+          >
             {defaultText}
           </option>
           {options?.map((option, index) => (
-            <option key={index} value={option.value}>
+            <option
+              key={index}
+              value={option.value}
+              selected={defaultValue === option.value}
+            >
               {option.name}
             </option>
           ))}

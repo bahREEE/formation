@@ -25,7 +25,9 @@ public class Formation {
 
     private String type;
 
-    private String annee;
+    private String date;
+
+    private int duree_jrs;
 
     private Integer nbsession;
 

@@ -65,7 +65,7 @@ const EditProfile = () => {
       errors={errors}
       items={profileFORM(defaults)}
       title="Edit profile"
-      rest
+      reset
     />
   );
 };

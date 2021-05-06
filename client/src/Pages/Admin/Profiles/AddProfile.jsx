@@ -53,7 +53,7 @@ const AddProfile = () => {
       errors={errors}
       items={profileFORM({ libelle: "" })}
       title="add profile"
-      rest
+      reset
     />
   );
 };

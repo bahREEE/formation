@@ -66,7 +66,7 @@ const EditDomain = () => {
       errors={errors}
       items={domainFORM(defaults)}
       title="Edit domain"
-      rest
+      reset
     />
   );
 };

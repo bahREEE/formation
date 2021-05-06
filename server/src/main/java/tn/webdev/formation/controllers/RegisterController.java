@@ -15,7 +15,7 @@ public class RegisterController {
     @Autowired
     private AccountService accountService;
 
-    @PostMapping(value = "/signup")
+    @PostMapping(value = "/signup/")
     public String register(@RequestBody RegisterRequest registerRequest){
 
         accountService.saveUser(registerRequest.getUsername(), registerRequest.getPassword(), 

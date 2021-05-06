@@ -7,7 +7,11 @@ import RequestApi from "../.././../Services/request";
 
 const AddAccount = () => {
   const history = useHistory();
-  const [user, setUser] = useState({ username: "", password: "", role: "" });
+  const [user, setUser] = useState({
+    username: "",
+    password: "",
+    role: "",
+  });
   const [errors, setErrors] = useState({
     username: "",
     password: "",
@@ -63,7 +67,7 @@ const AddAccount = () => {
       errors={errors}
       items={userFORM({ username: "", password: "", role: "none" })}
       title="Add user"
-      rest
+      reset
     />
   );
 };

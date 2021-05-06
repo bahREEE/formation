@@ -21,7 +21,7 @@ export const userDash = [
     Icon: DashIcon,
     identif: "formations",
     name: "Fomrations",
-    url: `${userDefaultUrl}`,
+    url: `${userDefaultUrl}/formations`,
   },
 
   {

@@ -7,7 +7,6 @@ import {
   adminDefaultIdentif,
   adminDash,
 } from "../../Constant/Dashboards/AdminDashboard";
-import "./main.scss";
 
 const MainAdmin = () => {
   return (

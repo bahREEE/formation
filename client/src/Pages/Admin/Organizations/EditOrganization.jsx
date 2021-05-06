@@ -70,7 +70,7 @@ const EditOrganization = () => {
       errors={errors}
       items={organizationFORM(defaults)}
       title="Edit organization"
-      rest
+      reset
     />
   );
 };

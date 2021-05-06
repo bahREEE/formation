@@ -11,7 +11,6 @@ const Input = ({
   required,
   defaultValue,
   disabled,
-  value,
 }) => {
   return (
     <div className="form__group">
@@ -27,7 +26,7 @@ const Input = ({
         disabled={disabled}
       />
       <label
-        htmlFor={placeholder}
+        htmlFor={id}
         className={`form__label  ${error && "form__label--error"} ${
           required && "form__label--required"
         } `}

@@ -75,6 +75,7 @@ const Login = () => {
             errors={errors}
             onSubmit={onSubmit}
             handleChange={handleChange}
+            buttomText="Sign in"
           />
         </div>
       </div>
