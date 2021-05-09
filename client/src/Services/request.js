@@ -2,7 +2,6 @@ import axios from "axios";
 
 const request = async (methode, url, id = "", body = null) => {
   const token = localStorage.getItem("token");
-  console.log(body);
   switch (methode) {
     case "get":
     case "delete":

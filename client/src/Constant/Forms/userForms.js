@@ -1,29 +1,29 @@
-import Input from "../../Components/Input/Input";
-import Select from "../../Components/Select/Select";
-
-export const formateurFORM = (defaultValues, organizations) => {
-  // console.log(defaultValues);
+//import Select  from "react-select";
+export const participantForm = (
+  defaultValues,
+  sessions,
+  countries,
+  profiles
+) => {
   return [
     {
       input: "input",
-      name: "formateurName",
-      id: "First name",
-      type: "text",
-      placeholder: "First name",
+      name: "nom",
+      id: "Name",
+      type: "input",
+      placeholder: "Name",
+      defaultValue: defaultValues["nom"],
       required: true,
-      defaultValue: defaultValues["formateurName"],
-      Component: Input,
     },
 
     {
       input: "input",
-      name: "formateurLastname",
-      id: "Last name",
-      type: "text",
-      placeholder: "Last name",
-      defaultValue: defaultValues["formateurLastname"],
+      name: "prenom",
+      id: "Last Name",
+      type: "input",
+      placeholder: "Last Name",
+      defaultValue: defaultValues["prenom"],
       required: true,
-      Component: Input,
     },
 
     {
@@ -34,7 +34,6 @@ export const formateurFORM = (defaultValues, organizations) => {
       placeholder: "Email",
       defaultValue: defaultValues["email"],
       required: true,
-      Component: Input,
     },
 
     {
@@ -45,13 +44,11 @@ export const formateurFORM = (defaultValues, organizations) => {
       placeholder: "phone",
       defaultValue: defaultValues["tel"],
       required: true,
-      Component: Input,
     },
 
     {
       name: "type",
       input: "select",
-      Component: Select,
       defaultText: "Select a type...",
       defaultValue: defaultValues["type"],
       options: ["interne", "externe"].map((type) => {
@@ -63,104 +60,43 @@ export const formateurFORM = (defaultValues, organizations) => {
     },
 
     {
-      name: "org",
+      name: "pays",
       input: "select",
-      Component: Select,
-      defaultText: "Select an organization...",
-      defaultValue: defaultValues["org"],
-      options: organizations.map((organization) => {
+      defaultText: "Select a Country...",
+      defaultValue: defaultValues["pays"],
+      options: countries.map((country) => {
         return {
-          value: JSON.stringify({ ...organization }),
-          name: organization.libelle,
-        };
-      }),
-    },
-  ];
-};
-
-export const formationForm = (defaultValues, domains) => {
-  // console.log(defaultValues);
-  return [
-    {
-      input: "input",
-      name: "titre",
-      id: "Title",
-      type: "text",
-      placeholder: "Title",
-      required: true,
-      defaultValue: defaultValues["titre"],
-      Component: Input,
-    },
-
-    {
-      name: "type",
-      input: "select",
-      Component: Select,
-      defaultText: "Select a type...",
-      defaultValue: defaultValues["type"],
-      options: ["nationale", "internationale"].map((type) => {
-        return {
-          value: type,
-          name: type,
+          value: JSON.stringify(country),
+          name: country.nom,
         };
       }),
     },
 
     {
-      name: "domaine",
+      name: "profil",
       input: "select",
-      Component: Select,
-      defaultText: "Select a domain...",
-      defaultValue: defaultValues["domaine"],
-      options: domains.map((domain) => {
+      defaultText: "Select a Profile...",
+      defaultValue: defaultValues["profil"],
+      options: profiles.map((profile) => {
         return {
-          value: JSON.stringify({ ...domain }),
-          name: domain.libelle,
+          value: JSON.stringify(profile),
+          name: profile.libelle,
         };
       }),
     },
 
     {
-      input: "input",
-      name: "date",
-      id: "Date",
-      type: "Date",
-      placeholder: "Date of Formation",
-      defaultValue: defaultValues["date"],
-      required: true,
-      Component: Input,
-    },
-
-    {
-      input: "input",
-      name: "duree_jrs",
-      id: "Duree (jours)",
-      type: "number",
-      placeholder: "Duree (jours)",
-      defaultValue: defaultValues["duree_jrs"],
-      required: true,
-      Component: Input,
-    },
-
-    {
-      input: "input",
-      name: "budget",
-      id: "Budget",
-      type: "float",
-      placeholder: "Budget (DT)",
-      defaultValue: defaultValues["budget"],
-      required: true,
-      Component: Input,
-    },
-    {
-      input: "input",
-      name: "nbsession",
-      id: "Nombre de sessions",
-      type: "number",
-      placeholder: "Nombre de sessions",
-      defaultValue: defaultValues["nbsession"],
-      required: true,
-      Component: Input,
+      input: "multi-select",
+      name: "sessions",
+      multiple: true,
+      defaultText: "Select Sessions...",
+      defaultValue: defaultValues["sessions"],
+      options: sessions.map((session) => {
+        return {
+          value: session,
+          label: session.formation.titre,
+        };
+      }),
     },
   ];
 };

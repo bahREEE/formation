@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import "../Buttons/button.scss";
 import "./list.scss";
 
-const List = ({ items, titles, name, path, handleDelete }) => {
+const List = ({ items, titles, name, path, handleDelete, unEdit }) => {
   const history = useHistory();
   const handleEdit = (id) => {
     history.push(`${path}/EDIT/${id}`);
@@ -33,11 +33,13 @@ const List = ({ items, titles, name, path, handleDelete }) => {
                 <td key={index}>{item[title.label]}</td>
               ))}
               <td className="list__icons">
-                <Edit
-                  className=" list__icon list__icon--edit"
-                  handleEdit={handleEdit}
-                  id={item.id}
-                />
+                {!unEdit && (
+                  <Edit
+                    className=" list__icon list__icon--edit"
+                    handleEdit={handleEdit}
+                    id={item.id}
+                  />
+                )}
                 <Trash
                   className=" list__icon list__icon--trash"
                   handleDelete={handleDelete}

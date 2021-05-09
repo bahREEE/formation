@@ -3,6 +3,7 @@
   display: flex;
   padding: 2rem 5rem;
   justify-content: space-between;
+  z-index: 10;
   &__logo {
     color: var(--main-color);
     background-color: #fff;

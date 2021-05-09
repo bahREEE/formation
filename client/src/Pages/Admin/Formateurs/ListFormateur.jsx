@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../Components/List/List";
 import Request from "../../../Services/request";
-import { formateurList } from "../../../Constant/Lists/userLists";
+import { formateurList } from "../../../Constant/Lists/adminLists";
 import { userAPI } from "../../../Services/api";
 
 const ListFormateur = () => {
@@ -43,7 +43,7 @@ const ListFormateur = () => {
       titles={formateurList}
       name="add Formateur"
       handleDelete={handleDelete}
-      path="/user/formateurs"
+      path="/admin/formateurs"
     />
   );
 };

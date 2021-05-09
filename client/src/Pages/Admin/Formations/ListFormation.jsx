@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import List from "../../../Components/List/List";
 import Request from "../../../Services/request";
-import { formationList } from "../../../Constant/Lists/userLists";
+import { formationList } from "../../../Constant/Lists/adminLists";
 import { userAPI } from "../../../Services/api";
 
 const ListFormation = () => {
@@ -45,7 +45,7 @@ const ListFormation = () => {
       titles={formationList}
       name="add formation"
       handleDelete={handleDelete}
-      path="/user/formations"
+      path="/admin/formations"
     />
   );
 };

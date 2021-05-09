@@ -9,6 +9,8 @@ const Select = ({
   options,
   defaultText,
   defaultValue,
+  multiple,
+  disabled,
 }) => {
   return (
     <Fragment>
@@ -18,6 +20,8 @@ const Select = ({
           name={name}
           onChange={(e) => handleChange(e.target.value, name)}
           defaultValue={defaultValue}
+          multiple={multiple}
+          disabled={disabled}
         >
           <option
             value="none"

@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -40,11 +41,12 @@ public class SessionFormation {
     private Formation formation;
 
     @ManyToMany(mappedBy = "sessions")
+    @JsonIgnore
     private List<Participant> participants;
 
-    private Date dateDebut;
+    private String dateDebut;
 
-    private Date dateFin;
+    private String dateFin;
 
     private Integer nbParticipants;
 }

@@ -1,23 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
-import { formationForm } from "../../../Constant/Forms/userForms";
-import { userAPI } from "../../../Services/api";
 import RequestApi from "../.././../Services/request";
+import { formationForm } from "../../../Constant/Forms/adminForms";
+import { userAPI } from "../../../Services/api";
 
-const AddFormation = () => {
+const EditForamtion = () => {
   const history = useHistory();
-
+  const { id: foramtionId } = useParams();
+  const [formation, setFormation] = useState({});
   const [domains, setDomains] = useState([]);
-  const [formation, setFormation] = useState({
-    titre: "",
-    type: "",
-    date: "",
-    nbsession: "",
-    budget: "",
-    duree_jrs: "",
-    domaine: null,
-  });
+  const [defaults, setDefaults] = useState({});
   const [errors, setErrors] = useState({
     titre: "",
     type: "",
@@ -31,20 +24,48 @@ const AddFormation = () => {
   useEffect(() => {
     try {
       async function fetchData() {
+        const {
+          data: {
+            titre,
+            budget,
+            date,
+            duree_jrs,
+            type,
+            domaine,
+            id,
+            nbsession,
+          },
+        } = await RequestApi("get", `${userAPI.FORMATION}${foramtionId}`);
         const { data } = await RequestApi("get", `${userAPI.DOMAIN}`);
+        const currentFormation = {
+          id,
+          titre,
+          budget,
+          date,
+          duree_jrs,
+          nbsession,
+          type,
+          domaine: JSON.stringify(domaine),
+        };
         setDomains(data);
+        setFormation({
+          ...currentFormation,
+        });
+
+        setDefaults({
+          ...currentFormation,
+        });
       }
       fetchData();
     } catch (error) {
       console.log(error.message);
     }
-  }, []);
+  }, [foramtionId]);
 
   const handleChange = (value, name) => {
     setFormation({ ...formation, [`${name}`]: value });
     setErrors({ ...errors, [`${name}`]: "" });
   };
-
   const checkError = () => {
     let errorsFound = false;
     let generateErrors = {
@@ -95,17 +116,17 @@ const AddFormation = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
     try {
       if (!checkError()) {
-        await RequestApi("post", userAPI.FORMATION, "", {
+        await RequestApi("put", userAPI.FORMATION, "", {
           ...formation,
           domaine: JSON.parse(formation.domaine),
           nbsession: parseInt(formation.nbsession),
           budget: parseFloat(formation.budget),
           duree_jrs: parseInt(formation.duree_jrs),
         });
-        history.push("/user/formations");
+
+        history.push("/admin/formations");
       }
     } catch (error) {
       console.log(error.message);
@@ -116,22 +137,10 @@ const AddFormation = () => {
       onSubmit={onSubmit}
       handleChange={handleChange}
       errors={errors}
-      items={formationForm(
-        {
-          titre: "",
-          type: "none",
-          domaine: "none",
-          date: "",
-          nbsession: "",
-          budget: "",
-          duree_jrs: "",
-        },
-        domains
-      )}
-      title="Add formation"
+      items={formationForm(defaults, domains)}
+      title="Edit Formation"
       reset
     />
   );
 };
-
-export default AddFormation;
+export default EditForamtion;

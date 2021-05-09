@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
-import { formateurFORM } from "../../../Constant/Forms/userForms";
+import { formateurFORM } from "../../../Constant/Forms/adminForms";
 import { userAPI } from "../../../Services/api";
 import RequestApi from "../.././../Services/request";
 
@@ -98,7 +98,7 @@ const AddFormateur = () => {
           org: JSON.parse(formateur.org),
           tel: parseInt(formateur.tel),
         });
-        history.push("/user/formateurs");
+        history.push("/admin/formateurs");
       }
     } catch (error) {
       console.log(error.message);

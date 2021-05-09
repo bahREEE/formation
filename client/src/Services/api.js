@@ -19,4 +19,6 @@ export const userAPI = {
   PARTICIPANT: `${url}/participants/`,
   ORGANIZATION: `${url}/organismes/`,
   DOMAIN: `${url}/domaines/`,
+  COUNTRY: `${url}/pays/`,
+  PROFILE: `${url}/profils/`,
 };

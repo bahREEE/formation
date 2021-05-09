@@ -2,6 +2,8 @@ import DashIcon from "../../assets/svgs/DashIcon";
 import Person from "../../assets/svgs/Person";
 import Earth from "../../assets/svgs/Earth";
 import Profile from "../../assets/svgs/Profile";
+import School from "../../assets/svgs/School";
+import Edit from "../../assets/svgs/Edit";
 
 const adminDefaultUrl = "/admin";
 export const adminDefaultIdentif = "dashboard";
@@ -17,6 +19,25 @@ export const adminDash = [
     identif: "accounts",
     name: "Accounts",
     url: `${adminDefaultUrl}/accounts`,
+  },
+  {
+    Icon: Person,
+    identif: "formateurs",
+    name: "Formateurs",
+    url: `${adminDefaultUrl}/formateurs`,
+  },
+  {
+    Icon: School,
+    identif: "formations",
+    name: "Fomrations",
+    url: `${adminDefaultUrl}/formations`,
+  },
+
+  {
+    Icon: Edit,
+    identif: "sessions",
+    name: "Sessions",
+    url: `${adminDefaultUrl}/sessions`,
   },
   {
     Icon: Earth,

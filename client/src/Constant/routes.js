@@ -25,13 +25,21 @@ import ListOrganization from "../Pages/Admin/Organizations/ListOrganization";
 import EditOrganization from "../Pages/Admin/Organizations/EditOrganization";
 import AddOrganization from "../Pages/Admin/Organizations/AddOrganization";
 
-import ListFormateur from "../Pages/User/Formateurs/ListFormateur";
-import EditFormateur from "../Pages/User/Formateurs/EditFormateur";
-import AddFormateur from "../Pages/User/Formateurs/AddFormateur";
+import ListFormateur from "../Pages/Admin/Formateurs/ListFormateur";
+import EditFormateur from "../Pages/Admin/Formateurs/EditFormateur";
+import AddFormateur from "../Pages/Admin/Formateurs/AddFormateur";
 
-import AddFormation from "../Pages/User/Formations/AddFormation";
-import EditForamtion from "../Pages/User/Formations/EditFormation";
-import ListFormation from "../Pages/User/Formations/ListFormation";
+import AddFormation from "../Pages/Admin/Formations/AddFormation";
+import EditForamtion from "../Pages/Admin/Formations/EditFormation";
+import ListFormation from "../Pages/Admin/Formations/ListFormation";
+
+import ListSessions from "../Pages/Admin/Sessions/ListSession";
+import EditSession from "../Pages/Admin/Sessions/EditSession";
+import AddSession from "../Pages/Admin/Sessions/AddSessions";
+
+import ListParticipant from "../Pages/User/Participants/ListParticipant";
+import EditParticipant from "../Pages/User/Participants/EditParticipant";
+import AddParticipant from "../Pages/User/Participants/AddParticipant";
 
 const adminPath = "/admin";
 const userPath = "/user";
@@ -116,9 +124,6 @@ export const AdminRoutes = [
     title: "organizations",
     path: "/organizations/EDIT/:id",
   },
-  { component: () => <Fragment />, title: "Acceuil", path: "/" },
-];
-export const UserRoutes = [
   {
     component: ListFormateur,
     title: "formateurs",
@@ -149,5 +154,40 @@ export const UserRoutes = [
     title: "formations",
     path: "/formations",
   },
+
+  {
+    component: ListSessions,
+    title: "sessions",
+    path: "/sessions",
+  },
+  {
+    component: EditSession,
+    title: "sessions",
+    path: "/sessions/EDIT/:id",
+  },
+  {
+    component: AddSession,
+    title: "sessions",
+    path: "/sessions/ADD",
+  },
+  { component: () => <Fragment />, title: "Acceuil", path: "/" },
+];
+export const UserRoutes = [
+  {
+    component: ListParticipant,
+    title: "participants",
+    path: "/participants",
+  },
+  {
+    component: EditParticipant,
+    title: "participants",
+    path: "/participants/EDIT/:id",
+  },
+  {
+    component: AddParticipant,
+    title: "participants",
+    path: "/participants/ADD",
+  },
+
   { component: () => <Fragment />, title: "Acceuil", path: "/" },
 ];
