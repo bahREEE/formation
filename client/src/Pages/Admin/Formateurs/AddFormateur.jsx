@@ -120,7 +120,7 @@ const AddFormateur = () => {
         },
         organizations
       )}
-      title="Add formateur"
+      title="Add Professor"
       reset
     />
   );

@@ -273,7 +273,7 @@ export const sessionForm = (
       name: "formateur",
       input: "select",
 
-      defaultText: "Select a formateur...",
+      defaultText: "Select a Professor...",
       defaultValue: defaultValues["formateur"],
       options: formateurs.map((formateur) => {
         return {

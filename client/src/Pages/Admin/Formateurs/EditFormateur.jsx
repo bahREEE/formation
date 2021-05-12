@@ -123,7 +123,7 @@ const EditFormateur = () => {
       handleChange={handleChange}
       errors={errors}
       items={formateurFORM(defaults, organizations)}
-      title="Edit Formateur"
+      title="Edit Professor"
       reset
     />
   );

@@ -126,17 +126,17 @@ export const AdminRoutes = [
   },
   {
     component: ListFormateur,
-    title: "formateurs",
+    title: "Professors",
     path: "/formateurs",
   },
   {
     component: AddFormateur,
-    title: "formateurs",
+    title: "Professors",
     path: "/formateurs/ADD",
   },
   {
     component: EditFormateur,
-    title: "formateurs",
+    title: "Professors",
     path: "/formateurs/EDIT/:id",
   },
   {
@@ -170,7 +170,7 @@ export const AdminRoutes = [
     title: "sessions",
     path: "/sessions/ADD",
   },
-  { component: () => <Fragment />, title: "Acceuil", path: "/" },
+  { component: () => <Fragment />, title: "Welcome", path: "/" },
 ];
 export const UserRoutes = [
   {
@@ -189,5 +189,5 @@ export const UserRoutes = [
     path: "/participants/ADD",
   },
 
-  { component: () => <Fragment />, title: "Acceuil", path: "/" },
+  { component: () => <Fragment />, title: "Welcome", path: "/" },
 ];

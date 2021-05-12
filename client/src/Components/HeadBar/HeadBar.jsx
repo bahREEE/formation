@@ -5,7 +5,7 @@ import "./headbar.scss";
 const HeadBar = () => {
   return (
     <div className="headbar">
-      <h1 className="headbar__logo">Formation</h1>
+      <h1 className="headbar__logo">Excellent Training</h1>
       <Link
         to="/login"
         className="headbar__logout"

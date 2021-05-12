@@ -4,7 +4,7 @@ export const usersList = [
 ];
 export const formateurList = [
   { label: "fullName", name: "Name" },
-  { label: "email", name: "email" },
+  { label: "email", name: "Email" },
   { label: "phone", name: "phone" },
   { label: "type", name: "Type" },
   { label: "org", name: "organization" },

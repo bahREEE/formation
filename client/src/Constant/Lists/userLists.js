@@ -1,6 +1,5 @@
 export const participantList = [
-  { label: "nom", name: "nom" },
-  { label: "prenom", name: "prenom" },
+  { label: "fullName", name: "full Name" },
   { label: "type", name: "type" },
   { label: "sessions", name: "sessions" },
   { label: "email", name: "email" },

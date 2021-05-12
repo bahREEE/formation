@@ -15,7 +15,7 @@ export const userDash = [
   {
     Icon: Logout,
     identif: "participants",
-    name: "participants",
+    name: "Participants",
     url: `${userDefaultUrl}/participants`,
   },
 ];

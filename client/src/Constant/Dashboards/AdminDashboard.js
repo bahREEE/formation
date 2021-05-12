@@ -23,13 +23,13 @@ export const adminDash = [
   {
     Icon: Person,
     identif: "formateurs",
-    name: "Formateurs",
+    name: "Professors",
     url: `${adminDefaultUrl}/formateurs`,
   },
   {
     Icon: School,
     identif: "formations",
-    name: "Fomrations",
+    name: "Formations",
     url: `${adminDefaultUrl}/formations`,
   },
 

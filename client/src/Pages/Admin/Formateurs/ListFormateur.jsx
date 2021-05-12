@@ -41,7 +41,7 @@ const ListFormateur = () => {
     <List
       items={formateurs}
       titles={formateurList}
-      name="add Formateur"
+      name="add Professor"
       handleDelete={handleDelete}
       path="/admin/formateurs"
     />

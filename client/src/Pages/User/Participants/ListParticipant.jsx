@@ -14,8 +14,7 @@ const ListParticipant = () => {
           data.map((participant) => {
             return {
               id: participant.id,
-              nom: participant.nom,
-              prenom: participant.prenom,
+              fullName: `${participant.prenom} ${participant.nom}`,
               type: participant.type,
               lieu: participant.lieu,
               tel: participant.tel,
