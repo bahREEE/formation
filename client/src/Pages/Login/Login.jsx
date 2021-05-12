@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Form from "../../Components/Form/Form";
 import { loginForm } from "../../Constant/Forms/loginForm";
 import { login } from "../../Services/api";
@@ -78,6 +79,9 @@ const Login = () => {
             buttomText="Sign in"
           />
         </div>
+        <Link className="login_nav" to="/signup">
+          Sign up
+        </Link>
       </div>
     </div>
   );

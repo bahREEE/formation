@@ -6,10 +6,8 @@
 
   &__container {
     width: 30%;
-    height: 60%;
-    padding: 5rem 3rem;
+    padding: 4rem 3rem;
     box-shadow: 0 1.5rem 4rem rgba(#000000, 0.3);
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,5 +15,17 @@
 
   &__form {
     flex: 1;
+  }
+
+  &_nav {
+    &:visited,
+    &:link {
+      margin-top: 2rem;
+      text-decoration: none;
+      color: var(--main-color);
+      align-self: flex-end;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
   }
 }
