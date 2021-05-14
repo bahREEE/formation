@@ -35,19 +35,19 @@ public class UserController {
 
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
     public List<AppUser> getusers(){
         return userRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
     public AppUser getUser(@PathVariable Long id){
         return userRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
     public ResponseEntity<String> addUser(@RequestBody UserRequest user){
         System.out.println(user.getRole());
         AppUser newUser = new AppUser();
@@ -60,7 +60,7 @@ public class UserController {
 
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
     public ResponseEntity<String> updateuser(@RequestBody  AppUser user){
         if(user.getId()==null)
             return new ResponseEntity<>("No user provided",HttpStatus.BAD_REQUEST);
