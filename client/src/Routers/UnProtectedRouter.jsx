@@ -5,10 +5,10 @@ const UnProtectedRouter = ({ component: Component, rest }) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const redirectPath = () => {
     switch (user.authorities[0].authority) {
-      case "ADMINISTRATEUR":
+      case "ROLE_ADMIN":
         return <Redirect to="/admin" />;
 
-      case "SIMPLE_UTILISATEUR":
+      case "ROLE_USER":
         return <Redirect to="/user" />;
       default:
         return <Redirect to="/login" />;

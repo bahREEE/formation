@@ -15,8 +15,7 @@ const ListAccount = () => {
             return {
               id: user.id,
               username: user.username,
-              role:
-                user.roles[0].roleName === "ADMINISTRATEUR" ? "Admin" : "User",
+              role: user.roles[0].roleName === "ROLE_ADMIN" ? "Admin" : "User",
             };
           })
         );

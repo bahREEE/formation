@@ -25,7 +25,7 @@ public class RegisterController {
 
     @Autowired
     private UserDetailsServiceImpl userDetails;
-    
+
     @PostMapping(value = "/signup/")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     public AuthenticationResponse register(@RequestBody RegisterRequest registerRequest){

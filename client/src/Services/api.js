@@ -13,6 +13,7 @@ export const adminAPI = {
   FORMATION: `${url}/formations/`,
   FORMATEUR: `${url}/formateurs/`,
   ORGANIZATION: `${url}/organismes/`,
+  SESSION: `${url}/sessions/`,
 };
 
 export const userAPI = {

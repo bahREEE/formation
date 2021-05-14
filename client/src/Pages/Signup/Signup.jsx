@@ -58,15 +58,15 @@ const Signup = () => {
       if (!checkError()) {
         const { data } = await RequestApi("post", login.SIGN, "", {
           ...client,
-          role: "SIMPLE_UTILISATEUR",
+          role: "USER",
         });
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", `Bearer ${data.token}`);
         switch (data.user.authorities[0].authority) {
-          case "ADMINISTRATEUR":
+          case "ROLE_ADMIN":
             history.push("/admin");
             break;
-          case "SIMPLE_UTILISATEUR":
+          case "ROLE_USER":
             history.push("/user");
             break;
           default:

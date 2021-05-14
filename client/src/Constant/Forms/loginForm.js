@@ -49,7 +49,7 @@ export const signForm = (defaultValues) => {
     {
       input: "input",
       name: "confirmedPassword",
-      id: "Password",
+      id: "confitmPassword",
       type: "password",
       placeholder: "Confirm Password",
       required: true,

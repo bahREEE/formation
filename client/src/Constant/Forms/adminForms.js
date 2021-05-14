@@ -31,7 +31,7 @@ export const userFORM = (defaultValues) => {
       options: Roles.map((role) => {
         return {
           value: role,
-          name: role === "ADMINISTRATEUR" ? "Admin" : "User",
+          name: role === "ROLE_ADMIN" ? "Admin" : "User",
         };
       }),
     },
