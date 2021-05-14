@@ -21,7 +21,7 @@ public class DomaineController {
     private DomaineRepository domaineRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Domaine> getdomaines(){
         return domaineRepository.findAll();
     }

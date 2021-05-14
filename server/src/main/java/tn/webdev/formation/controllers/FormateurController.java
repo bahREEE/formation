@@ -61,6 +61,7 @@ public class FormateurController {
     }
 
     @DeleteMapping(value = "/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteauformateur(@PathVariable Long id){
         formateurRepository.deleteById(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);

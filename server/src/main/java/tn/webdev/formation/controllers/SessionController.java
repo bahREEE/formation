@@ -33,6 +33,7 @@ public class SessionController {
     }
 
     @PostMapping(value = "/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addsession(@RequestBody SessionFormation session){
         sessionFormationRepository.save(session);
         return new ResponseEntity<>("Session added successfully", HttpStatus.OK);
