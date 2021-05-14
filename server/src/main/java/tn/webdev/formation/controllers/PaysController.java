@@ -23,26 +23,26 @@ public class PaysController {
     private PaysRepository paysRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('SIMPLE_UTILISATEUR') or hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<Pays> getallpays(){
         return paysRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('SIMPLE_UTILISATEUR') or hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public Pays getpays(@PathVariable Long id){
         return paysRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addpays(@RequestBody Pays pays){
         paysRepository.save(pays);
         return new ResponseEntity<>("Pays added successfully", HttpStatus.OK);
     }
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updatepays(@RequestBody Pays pays){
         if(pays.getId()==null)
             return new ResponseEntity<>("No country provided",HttpStatus.BAD_REQUEST);
@@ -54,14 +54,14 @@ public class PaysController {
     }
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallpays(){
         paysRepository.deleteAll();
         return new ResponseEntity<>("All pays deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deletepays(@PathVariable Long id){
         paysRepository.deleteById(id);
         return new ResponseEntity<>("Pays deleted successfully", HttpStatus.OK);

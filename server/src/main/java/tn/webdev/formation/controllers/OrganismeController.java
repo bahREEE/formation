@@ -21,26 +21,26 @@ public class OrganismeController {
     private OrganismeRepository organismeRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Organisme> getorganismes(){
         return organismeRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public Organisme getAnorganisme(@PathVariable Long id){
         return organismeRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addOrganisme(@RequestBody Organisme organisme){
         organismeRepository.save(organisme);
         return new ResponseEntity<>("Organisme added successfully", HttpStatus.OK);
     }
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updateFormateur(@RequestBody Organisme organisme){
         if(organisme.getId()==null)
             return new ResponseEntity<>("No organisme provided",HttpStatus.BAD_REQUEST);
@@ -53,14 +53,14 @@ public class OrganismeController {
 
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallorganismes(){
         organismeRepository.deleteAll();
         return new ResponseEntity<>("All organismes deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteanorganisme(@PathVariable Long id){
         organismeRepository.deleteById(id);
         return new ResponseEntity<>("Organisme deleted successfully", HttpStatus.OK);

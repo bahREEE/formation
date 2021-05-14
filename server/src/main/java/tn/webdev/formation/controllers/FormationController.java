@@ -21,19 +21,19 @@ public class FormationController {
     private FormationRepository formationRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Formation> getformations(){
         return formationRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public Formation getAformation(@PathVariable Long id){
         return formationRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addformation(@RequestBody Formation formation){
         System.out.println(formation.getDomaine());
         formationRepository.save(formation);
@@ -42,7 +42,7 @@ public class FormationController {
 
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updateFormateur(@RequestBody Formation formation){
         if(formation.getId()==null)
             return new ResponseEntity<>("No formation provided",HttpStatus.BAD_REQUEST);
@@ -56,14 +56,14 @@ public class FormationController {
 
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallformations(){
         formationRepository.deleteAll();
         return new ResponseEntity<>("All formations deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteaformation(@PathVariable Long id){
         formationRepository.deleteById(id);
         return new ResponseEntity<>("Formation deleted successfully", HttpStatus.OK);

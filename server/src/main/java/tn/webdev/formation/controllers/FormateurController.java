@@ -21,26 +21,26 @@ public class FormateurController {
     private FormateurRepository formateurRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<Formateur> getformateurs(){
         return formateurRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public Formateur getAformateur(@PathVariable Long id){
         return formateurRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addFormateur(@RequestBody Formateur formateur){
         formateurRepository.save(formateur);
         return new ResponseEntity<>("Formateur added successfully", HttpStatus.OK);
     }
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updateFormateur(@RequestBody Formateur formateur){
         if(formateur.getId()==null)
             return new ResponseEntity<>("No formateur provided",HttpStatus.BAD_REQUEST);
@@ -54,7 +54,7 @@ public class FormateurController {
 
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallformateur(){
         formateurRepository.deleteAll();
         return new ResponseEntity<>("All formateurs deleted successfully", HttpStatus.OK);

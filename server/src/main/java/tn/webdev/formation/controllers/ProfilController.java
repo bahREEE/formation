@@ -22,26 +22,26 @@ public class ProfilController {
     private ProfilRepository profilRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('SIMPLE_UTILISATEUR') or hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<Profil> getprofils(){
         return profilRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('SIMPLE_UTILISATEUR') or hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public Profil getprofil(@PathVariable Long id){
         return profilRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addprofil(@RequestBody Profil profil){
         profilRepository.save(profil);
         return new ResponseEntity<>("Profil added successfully", HttpStatus.OK);
     }
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updateprofil(@RequestBody Profil profil){
         if(profil.getId()==null)
             return new ResponseEntity<>("No profile provided",HttpStatus.BAD_REQUEST);
@@ -55,14 +55,14 @@ public class ProfilController {
 
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallprofils(){
         profilRepository.deleteAll();
         return new ResponseEntity<>("All profils deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteprofil(@PathVariable Long id){
         profilRepository.deleteById(id);
         return new ResponseEntity<>("Profil deleted successfully", HttpStatus.OK);

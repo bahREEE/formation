@@ -21,13 +21,13 @@ public class SessionController {
     private SessionFormationRepository sessionFormationRepository;
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('SIMPLE_UTILISATEUR') or hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public List<SessionFormation> getusers(){
         return sessionFormationRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('SIMPLE_UTILISATEUR') or hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public SessionFormation getsession(@PathVariable Long id){
         return sessionFormationRepository.findById(id).orElseThrow();
     }
@@ -39,7 +39,7 @@ public class SessionController {
     }
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updatesession(@RequestBody SessionFormation session){
         if(session.getId()==null)
             return new ResponseEntity<>("No session provided",HttpStatus.BAD_REQUEST);
@@ -54,14 +54,14 @@ public class SessionController {
 
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallsessions(){
         sessionFormationRepository.deleteAll();
         return new ResponseEntity<>("All sessions deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deletesession(@PathVariable Long id){
         sessionFormationRepository.deleteById(id);
         return new ResponseEntity<>("Session deleted successfully", HttpStatus.OK);
