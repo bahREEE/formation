@@ -35,19 +35,19 @@ public class UserController {
 
 
     @GetMapping(value = "/")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<AppUser> getusers(){
         return userRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public AppUser getUser(@PathVariable Long id){
         return userRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> addUser(@RequestBody UserRequest user){
         System.out.println(user.getRole());
         AppUser newUser = new AppUser();
@@ -60,7 +60,7 @@ public class UserController {
 
 
     @PutMapping(value = "/")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> updateuser(@RequestBody  AppUser user){
         if(user.getId()==null)
             return new ResponseEntity<>("No user provided",HttpStatus.BAD_REQUEST);
@@ -72,14 +72,14 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteallusers(){
         userRepository.deleteAll();
         return new ResponseEntity<>("All users deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteauser(@PathVariable Long id){
         userRepository.deleteById(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
@@ -89,9 +89,9 @@ public class UserController {
 
         List<AppRole>roles=new ArrayList<>();
         switch (role){
-            case "SIMPLE_UTILISATEUR":roles.add(roleRepository.findByroleName(ERole.SIMPLE_UTILISATEUR));
+            case "ROLE_USER":roles.add(roleRepository.findByroleName(ERole.ROLE_USER));
                 break;
-            case "ADMINISTRATEUR":roles.add(roleRepository.findByroleName(ERole.ADMINISTRATEUR));
+            case "ROLE_ADMIN":roles.add(roleRepository.findByroleName(ERole.ROLE_ADMIN));
                 break;
             default: new RuntimeException("Error: Role not found!");
         }

@@ -56,9 +56,9 @@ public class AccountServiceImpl implements AccountService{
         System.out.println("-------------------------");
         List<AppRole>roles=new ArrayList<>();
         switch (role){
-            case "SIMPLE_UTILISATEUR":roles.add(roleRepository.findByroleName(ERole.SIMPLE_UTILISATEUR));
+            case "ROLE_USER":roles.add(roleRepository.findByroleName(ERole.ROLE_USER));
             break;
-            case "ADMINISTRATEUR":roles.add(roleRepository.findByroleName(ERole.ADMINISTRATEUR));
+            case "ROLE_ADMIN":roles.add(roleRepository.findByroleName(ERole.ROLE_ADMIN));
             break;
             default: new RuntimeException("Error: Role not found!");
         }

@@ -26,9 +26,9 @@ public class FormationApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		if(roleRepository.findByroleName(ERole.SIMPLE_UTILISATEUR)==null){
-			roleRepository.save(new AppRole(null,ERole.ADMINISTRATEUR));
-			roleRepository.save(new AppRole(null,ERole.SIMPLE_UTILISATEUR));
+		if(roleRepository.findByroleName(ERole.ROLE_USER)==null){
+			roleRepository.save(new AppRole(null,ERole.ROLE_ADMIN));
+			roleRepository.save(new AppRole(null,ERole.ROLE_USER));
 		}
 
 	}
