@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
 import { formationForm } from "../../../Constant/Forms/adminForms";
-import { userAPI } from "../../../Services/api";
+import { adminAPI } from "../../../Services/api";
 
 const EditForamtion = () => {
   const history = useHistory();
@@ -35,8 +35,8 @@ const EditForamtion = () => {
             id,
             nbsession,
           },
-        } = await RequestApi("get", `${userAPI.FORMATION}${foramtionId}`);
-        const { data } = await RequestApi("get", `${userAPI.DOMAIN}`);
+        } = await RequestApi("get", `${adminAPI.FORMATION}${foramtionId}`);
+        const { data } = await RequestApi("get", `${adminAPI.DOMAIN}`);
         const currentFormation = {
           id,
           titre,
@@ -118,7 +118,7 @@ const EditForamtion = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        await RequestApi("put", userAPI.FORMATION, "", {
+        await RequestApi("put", adminAPI.FORMATION, "", {
           ...formation,
           domaine: JSON.parse(formation.domaine),
           nbsession: parseInt(formation.nbsession),

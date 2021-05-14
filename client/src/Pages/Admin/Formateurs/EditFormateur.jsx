@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
 import { formateurFORM } from "../../../Constant/Forms/adminForms";
-import { userAPI } from "../../../Services/api";
+import { adminAPI } from "../../../Services/api";
 
 const EditFormateur = () => {
   const history = useHistory();
@@ -25,8 +25,8 @@ const EditFormateur = () => {
       async function fetchData() {
         const {
           data: { formateurName, formateurLastname, email, tel, type, org, id },
-        } = await RequestApi("get", `${userAPI.FORMATEUR}${formateurId}`);
-        const { data } = await RequestApi("get", `${userAPI.ORGANIZATION}`);
+        } = await RequestApi("get", `${adminAPI.FORMATEUR}${formateurId}`);
+        const { data } = await RequestApi("get", `${adminAPI.ORGANIZATION}`);
         const currntFormateur = {
           id,
           formateurName,
@@ -105,7 +105,7 @@ const EditFormateur = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        await RequestApi("put", userAPI.FORMATEUR, "", {
+        await RequestApi("put", adminAPI.FORMATEUR, "", {
           ...formateur,
           org: JSON.parse(formateur.org),
           tel: parseInt(formateur.tel),

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import { formateurFORM } from "../../../Constant/Forms/adminForms";
-import { userAPI } from "../../../Services/api";
+import { adminAPI } from "../../../Services/api";
 import RequestApi from "../.././../Services/request";
 
 const AddFormateur = () => {
@@ -29,7 +29,7 @@ const AddFormateur = () => {
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await RequestApi("get", `${userAPI.ORGANIZATION}`);
+        const { data } = await RequestApi("get", `${adminAPI.ORGANIZATION}`);
         setOrganizations(data);
       }
       fetchData();
@@ -93,7 +93,7 @@ const AddFormateur = () => {
 
     try {
       if (!checkError()) {
-        await RequestApi("post", userAPI.FORMATEUR, "", {
+        await RequestApi("post", adminAPI.FORMATEUR, "", {
           ...formateur,
           org: JSON.parse(formateur.org),
           tel: parseInt(formateur.tel),

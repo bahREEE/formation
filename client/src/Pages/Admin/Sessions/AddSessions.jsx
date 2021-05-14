@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import { sessionForm } from "../../../Constant/Forms/adminForms";
-import { userAPI } from "../../../Services/api";
+import { adminAPI } from "../../../Services/api";
 import RequestApi from "../.././../Services/request";
 
 const AddSession = () => {
@@ -35,14 +35,17 @@ const AddSession = () => {
       async function fetchData() {
         const { data: orgs } = await RequestApi(
           "get",
-          `${userAPI.ORGANIZATION}`
+          `${adminAPI.ORGANIZATION}`
         );
         setOrganizations(orgs);
-        const { data: forms } = await RequestApi("get", `${userAPI.FORMATION}`);
+        const { data: forms } = await RequestApi(
+          "get",
+          `${adminAPI.FORMATION}`
+        );
         setformations(forms);
         const { data: formates } = await RequestApi(
           "get",
-          `${userAPI.FORMATEUR}`
+          `${adminAPI.FORMATEUR}`
         );
         setFormateurs(formates);
       }
@@ -111,7 +114,7 @@ const AddSession = () => {
 
     try {
       if (!checkError()) {
-        await RequestApi("post", userAPI.SESSION, "", {
+        await RequestApi("post", adminAPI.SESSION, "", {
           ...session,
           formateur: JSON.parse(session.formateur),
           formation: JSON.parse(session.formation),
