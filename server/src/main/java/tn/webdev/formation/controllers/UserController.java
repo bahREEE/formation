@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,16 +35,19 @@ public class UserController {
 
 
     @GetMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public List<AppUser> getusers(){
         return userRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public AppUser getUser(@PathVariable Long id){
         return userRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> addUser(@RequestBody UserRequest user){
         System.out.println(user.getRole());
         AppUser newUser = new AppUser();
@@ -56,7 +60,8 @@ public class UserController {
 
 
     @PutMapping(value = "/")
-    public ResponseEntity<String> updateFormateur(@RequestBody  AppUser user){
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    public ResponseEntity<String> updateuser(@RequestBody  AppUser user){
         if(user.getId()==null)
             return new ResponseEntity<>("No user provided",HttpStatus.BAD_REQUEST);
         if(userRepository.findById(user.getId())==null)
@@ -67,12 +72,14 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> deleteallusers(){
         userRepository.deleteAll();
         return new ResponseEntity<>("All users deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> deleteauser(@PathVariable Long id){
         userRepository.deleteById(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);

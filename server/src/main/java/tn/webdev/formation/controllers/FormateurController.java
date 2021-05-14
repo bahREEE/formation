@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import tn.webdev.formation.dao.FormateurRepository;
@@ -20,22 +21,26 @@ public class FormateurController {
     private FormateurRepository formateurRepository;
 
     @GetMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public List<Formateur> getformateurs(){
         return formateurRepository.findAll();
     }
 
     @GetMapping(value = "/{id}")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public Formateur getAformateur(@PathVariable Long id){
         return formateurRepository.findById(id).orElseThrow();
     }
 
     @PostMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> addFormateur(@RequestBody Formateur formateur){
         formateurRepository.save(formateur);
         return new ResponseEntity<>("Formateur added successfully", HttpStatus.OK);
     }
 
     @PutMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> updateFormateur(@RequestBody Formateur formateur){
         if(formateur.getId()==null)
             return new ResponseEntity<>("No formateur provided",HttpStatus.BAD_REQUEST);
@@ -49,6 +54,7 @@ public class FormateurController {
 
 
     @DeleteMapping(value = "/")
+    @PreAuthorize("hasRole('ADMINISTRATEUR')")
     public ResponseEntity<String> deleteallformateur(){
         formateurRepository.deleteAll();
         return new ResponseEntity<>("All formateurs deleted successfully", HttpStatus.OK);
