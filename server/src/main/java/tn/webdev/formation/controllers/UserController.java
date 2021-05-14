@@ -72,14 +72,14 @@ public class UserController {
     }
 
     @DeleteMapping(value = "/")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
     public ResponseEntity<String> deleteallusers(){
         userRepository.deleteAll();
         return new ResponseEntity<>("All users deleted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping(value = "/{id}")
-    @PreAuthorize("hasRole('ADMINISTRATEUR')")
+    @PreAuthorize("hasRole('ROLE_ADMINISTRATEUR')")
     public ResponseEntity<String> deleteauser(@PathVariable Long id){
         userRepository.deleteById(id);
         return new ResponseEntity<>("User deleted successfully", HttpStatus.OK);
