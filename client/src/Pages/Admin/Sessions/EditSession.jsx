@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import RequestApi from "../.././../Services/request";
 import { sessionForm } from "../../../Constant/Forms/adminForms";
-import { userAPI } from "../../../Services/api";
+import { adminAPI } from "../../../Services/api";
 
 const EditSession = () => {
   const history = useHistory();
@@ -28,14 +28,17 @@ const EditSession = () => {
       async function fetchData() {
         const { data: orgs } = await RequestApi(
           "get",
-          `${userAPI.ORGANIZATION}`
+          `${adminAPI.ORGANIZATION}`
         );
         setOrganizations(orgs);
-        const { data: forms } = await RequestApi("get", `${userAPI.FORMATION}`);
+        const { data: forms } = await RequestApi(
+          "get",
+          `${adminAPI.FORMATION}`
+        );
         setformations(forms);
         const { data: formates } = await RequestApi(
           "get",
-          `${userAPI.FORMATEUR}`
+          `${adminAPI.FORMATEUR}`
         );
         setFormateurs(formates);
         const {
@@ -49,7 +52,7 @@ const EditSession = () => {
             lieu,
             organisme,
           },
-        } = await RequestApi("get", `${userAPI.SESSION}${sessionId}`);
+        } = await RequestApi("get", `${adminAPI.SESSION}${sessionId}`);
 
         const currentFormation = {
           id,
@@ -133,7 +136,7 @@ const EditSession = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        await RequestApi("put", userAPI.SESSION, "", {
+        await RequestApi("put", adminAPI.SESSION, "", {
           ...session,
           formateur: JSON.parse(session.formateur),
           formation: JSON.parse(session.formation),

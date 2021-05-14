@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import Form from "../../../Components/Form/Form";
 import { formationForm } from "../../../Constant/Forms/adminForms";
-import { userAPI } from "../../../Services/api";
+import { adminAPI } from "../../../Services/api";
 import RequestApi from "../.././../Services/request";
 
 const AddFormation = () => {
@@ -31,7 +31,7 @@ const AddFormation = () => {
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await RequestApi("get", `${userAPI.DOMAIN}`);
+        const { data } = await RequestApi("get", `${adminAPI.DOMAIN}`);
         setDomains(data);
       }
       fetchData();
@@ -98,7 +98,7 @@ const AddFormation = () => {
 
     try {
       if (!checkError()) {
-        await RequestApi("post", userAPI.FORMATION, "", {
+        await RequestApi("post", adminAPI.FORMATION, "", {
           ...formation,
           domaine: JSON.parse(formation.domaine),
           nbsession: parseInt(formation.nbsession),

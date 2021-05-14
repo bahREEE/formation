@@ -41,6 +41,10 @@ import ListParticipant from "../Pages/User/Participants/ListParticipant";
 import EditParticipant from "../Pages/User/Participants/EditParticipant";
 import AddParticipant from "../Pages/User/Participants/AddParticipant";
 
+import ListS from "../Pages/User/Sessions/ListSession";
+import ListC from "../Pages/User/Countries/Country";
+import ListP from "../Pages/User/Profiles/ListProfile";
+
 const adminPath = "/admin";
 const userPath = "/user";
 
@@ -187,6 +191,23 @@ export const UserRoutes = [
     component: AddParticipant,
     title: "participants",
     path: "/participants/ADD",
+  },
+
+  {
+    component: ListS,
+    title: "sessions",
+    path: "/sessions",
+  },
+  {
+    component: ListP,
+    title: "profiles",
+    path: "/profiles",
+  },
+
+  {
+    component: ListC,
+    title: "countries",
+    path: "/countries",
   },
 
   { component: () => <Fragment />, title: "Welcome", path: "/" },

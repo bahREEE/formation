@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import List from "../../../Components/List/List";
 import Request from "../../../Services/request";
 import { sessionList } from "../../../Constant/Lists/adminLists";
-import { adminAPI } from "../../../Services/api";
+import { userAPI } from "../../../Services/api";
 
-const ListSessions = () => {
+const ListSession = () => {
   const [sessions, setSessions] = useState([]);
   useEffect(() => {
     try {
       async function fetchData() {
-        const { data } = await Request("get", adminAPI.SESSION);
+        const { data } = await Request("get", userAPI.SESSION);
         setSessions(
           data.map((session) => {
             return {
@@ -31,23 +31,7 @@ const ListSessions = () => {
     }
   }, []);
 
-  const handleDelete = async (id) => {
-    try {
-      await Request("delete", adminAPI.SESSION, id);
-      setSessions(sessions.filter((session) => session.id !== id));
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-  return (
-    <List
-      items={sessions}
-      titles={sessionList}
-      name="add session"
-      handleDelete={handleDelete}
-      path="/admin/sessions"
-    />
-  );
+  return <List items={sessions} titles={sessionList} unDeleteble />;
 };
 
-export default ListSessions;
+export default ListSession;
