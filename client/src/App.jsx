@@ -1,12 +1,14 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import { Switch, Redirect } from "react-router-dom";
 import ProtectedRouter from "./Routers/ProtectedRouter";
 import UnProtectedRouter from "./Routers/UnProtectedRouter";
 import HeadBar from "./Components/HeadBar/HeadBar";
+import Model from "./Components/Model/Model";
 import { AuthenticateRouters, MainRoutes } from "./Constant/routes";
 import "./App.scss";
 
 const App = () => {
+  const [MComponent, setModelComponent] = useState(null);
   return (
     <div className="App">
       <Switch>
@@ -28,7 +30,7 @@ const App = () => {
               <Fragment>
                 <HeadBar />
                 <div className="client__container">
-                  <Component />
+                  <Component setModelComponent={setModelComponent} />
                 </div>
               </Fragment>
             )}
@@ -37,6 +39,13 @@ const App = () => {
 
         <Redirect from="/" to="/login" />
       </Switch>
+
+      {MComponent && (
+        <Model
+          setModelComponent={setModelComponent}
+          component={MComponent}
+        ></Model>
+      )}
     </div>
   );
 };

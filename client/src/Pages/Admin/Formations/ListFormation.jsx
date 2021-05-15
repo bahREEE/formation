@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { formationList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListFormation = () => {
+const ListFormation = ({ setModelComponent }) => {
   const [formations, setFormations] = useState([]);
   useEffect(() => {
     try {
@@ -35,6 +35,7 @@ const ListFormation = () => {
     try {
       await Request("delete", adminAPI.FORMATION, id);
       setFormations(formations.filter((formation) => formation.id !== id));
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -46,6 +47,7 @@ const ListFormation = () => {
       name="add formation"
       handleDelete={handleDelete}
       path="/admin/formations"
+      setModelComponent={setModelComponent}
     />
   );
 };

@@ -23,7 +23,7 @@ export const formationList = [
 export const sessionList = [
   { label: "formation", name: "formation" },
   { label: "formateur", name: "formateur" },
-  { label: "organisme", name: "organisarition" },
+  { label: "organisme", name: "organization" },
   { label: "lieu", name: "place" },
   { label: "dateDebut", name: "start" },
   { label: "dateFin", name: "end" },

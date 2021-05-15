@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { formateurList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListFormateur = () => {
+const ListFormateur = ({ setModelComponent }) => {
   const [formateurs, setFormateurs] = useState([]);
   useEffect(() => {
     try {
@@ -33,6 +33,7 @@ const ListFormateur = () => {
     try {
       await Request("delete", adminAPI.FORMATEUR, id);
       setFormateurs(formateurs.filter((formateur) => formateur.id !== id));
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -44,6 +45,7 @@ const ListFormateur = () => {
       name="add Professor"
       handleDelete={handleDelete}
       path="/admin/formateurs"
+      setModelComponent={setModelComponent}
     />
   );
 };

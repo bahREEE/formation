@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { participantList } from "../../../Constant/Lists/userLists";
 import { userAPI } from "../../../Services/api";
 
-const ListParticipant = () => {
+const ListParticipant = ({ setModelComponent }) => {
   const [participants, setParticipants] = useState([]);
   useEffect(() => {
     try {
@@ -39,9 +39,11 @@ const ListParticipant = () => {
       setParticipants(
         participants.filter((participant) => participant.id !== id)
       );
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
+    /* */
   };
   return (
     <List
@@ -50,6 +52,7 @@ const ListParticipant = () => {
       name="Add a participant"
       handleDelete={handleDelete}
       path="/user/participants"
+      setModelComponent={setModelComponent}
     />
   );
 };

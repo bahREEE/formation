@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { profileList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListProfile = () => {
+const ListProfile = ({ setModelComponent }) => {
   const [profiles, setProfiles] = useState([]);
   useEffect(() => {
     try {
@@ -29,6 +29,7 @@ const ListProfile = () => {
     try {
       await Request("delete", adminAPI.PROFILE, id);
       setProfiles(profiles.filter((profile) => profile.id !== id));
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -41,6 +42,7 @@ const ListProfile = () => {
       name="add profile"
       handleDelete={handleDelete}
       path="/admin/profiles"
+      setModelComponent={setModelComponent}
     />
   );
 };

@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { sessionList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListSessions = () => {
+const ListSessions = ({ setModelComponent }) => {
   const [sessions, setSessions] = useState([]);
   useEffect(() => {
     try {
@@ -35,6 +35,7 @@ const ListSessions = () => {
     try {
       await Request("delete", adminAPI.SESSION, id);
       setSessions(sessions.filter((session) => session.id !== id));
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -46,6 +47,7 @@ const ListSessions = () => {
       name="add session"
       handleDelete={handleDelete}
       path="/admin/sessions"
+      setModelComponent={setModelComponent}
     />
   );
 };

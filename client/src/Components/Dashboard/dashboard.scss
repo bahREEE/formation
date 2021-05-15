@@ -23,6 +23,8 @@
     color: var(--grey-color);
     backface-visibility: hidden;
     position: relative;
+    border-radius: 0 0 20rem;
+
     &::after {
       content: "";
       position: absolute;
@@ -78,14 +80,16 @@
 .dashboard__draggable {
   display: flex;
   flex-direction: column;
-  padding: 1.5rem 0rem;
+  padding: 1.5rem 3rem;
+  overflow: hidden;
+  // background-color: brown;
 
   &--list {
     display: flex;
     align-items: center;
     color: var(--grey-color);
     cursor: pointer;
-    padding: 0rem 3rem;
+
     &:hover {
       color: var(--main-color);
     }
@@ -95,20 +99,27 @@
     margin-top: 3px;
     color: var(--grey-color);
     list-style: none;
+    height: auto;
     display: flex;
     flex-direction: column;
-    max-height: 0px;
   }
 
   &--item {
+    position: relative;
     text-decoration: none;
-    padding: 1rem 0.5rem;
+    padding: 1.2rem 0.5rem;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: 1px;
     color: currentColor;
-    position: relative;
+
+    transition: all 0.1s;
+
+    &:hover {
+      color: var(--main-color);
+      font-weight: 900;
+    }
     &::after {
       content: "";
       position: absolute;

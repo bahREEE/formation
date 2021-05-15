@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { organizationList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListOrganization = () => {
+const ListOrganization = ({ setModelComponent }) => {
   const [organizations, setOrganization] = useState([]);
   useEffect(() => {
     try {
@@ -31,6 +31,7 @@ const ListOrganization = () => {
       setOrganization(
         organizations.filter((organization) => organization.id !== id)
       );
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -43,6 +44,7 @@ const ListOrganization = () => {
       name="add organization"
       handleDelete={handleDelete}
       path="/admin/organizations"
+      setModelComponent={setModelComponent}
     />
   );
 };

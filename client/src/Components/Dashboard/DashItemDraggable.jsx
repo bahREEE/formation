@@ -24,12 +24,12 @@ const DashItemDraggble = ({ active, item, handleActive }) => {
 
   const itemStyle = () => {
     return {
-      maxHeight: `${drag ? "100px" : "0px"}`,
       display: !drag && "none",
     };
   };
+
   return (
-    <div to="/admin" className="dashboard__draggable">
+    <div className="dashboard__draggable">
       <div
         className="dashboard__draggable--list"
         onClick={() => setDrag(!drag)}

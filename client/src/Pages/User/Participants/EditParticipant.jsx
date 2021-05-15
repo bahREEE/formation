@@ -153,6 +153,7 @@ const EditParticipant = () => {
       items={participantForm(defaults, sessions, countries, profiles)}
       title="Edit participant"
       reset
+      action="edit"
     />
   );
 };

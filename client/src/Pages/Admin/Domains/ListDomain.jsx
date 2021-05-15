@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { domainList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListDomain = () => {
+const ListDomain = ({ setModelComponent }) => {
   const [domains, setDomains] = useState([]);
   useEffect(() => {
     try {
@@ -29,6 +29,7 @@ const ListDomain = () => {
     try {
       await Request("delete", adminAPI.DOMAIN, id);
       setDomains(domains.filter((domain) => domain.id !== id));
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -41,6 +42,7 @@ const ListDomain = () => {
       name="add domain"
       handleDelete={handleDelete}
       path="/admin/domains"
+      setModelComponent={setModelComponent}
     />
   );
 };

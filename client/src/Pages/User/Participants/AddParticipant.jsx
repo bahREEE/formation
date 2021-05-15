@@ -48,13 +48,11 @@ const AddParticiapant = () => {
   }, []);
 
   const handleChange = (value, name) => {
-    console.log(value, name);
     setParticipant({ ...participant, [`${name}`]: value });
     setErrors({ ...errors, [`${name}`]: "" });
   };
 
   const handleSelect = (values) => {
-    console.log(values);
     setParticipant({
       ...participant,
       sessions: values.map((opt) => opt.value),
@@ -153,6 +151,7 @@ const AddParticiapant = () => {
       )}
       title="Add participant"
       reset
+      action="add"
     />
   );
 };

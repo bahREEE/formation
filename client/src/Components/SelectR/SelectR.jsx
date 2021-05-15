@@ -9,8 +9,9 @@ const SelectR = ({
   defaultValue,
   error,
   defaultText,
+  action,
 }) => {
-  return (
+  return action === "add" ? (
     <div className="form__group">
       <Select
         defaultValue={defaultValue}
@@ -23,6 +24,21 @@ const SelectR = ({
 
       {error && <div className="message__error">{error}</div>}
     </div>
+  ) : (
+    defaultValue.length !== 0 && (
+      <div className="form__group">
+        <Select
+          defaultValue={defaultValue}
+          classNamePrefix={`react-select  ${error && "react-select--error"}`}
+          placeholder={defaultText}
+          isMulti={isMulti}
+          onChange={handleChange}
+          options={options}
+        />
+
+        {error && <div className="message__error">{error}</div>}
+      </div>
+    )
   );
 };
 

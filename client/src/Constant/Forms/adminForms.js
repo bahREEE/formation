@@ -95,7 +95,7 @@ export const organizationFORM = (defaultValues) => {
 };
 
 export const formationForm = (defaultValues, domains) => {
-  // console.log(defaultValues);
+
   return [
     {
       input: "input",
@@ -177,7 +177,7 @@ export const formationForm = (defaultValues, domains) => {
 };
 
 export const formateurFORM = (defaultValues, organizations) => {
-  // console.log(defaultValues);
+  
   return [
     {
       input: "input",

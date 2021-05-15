@@ -1,15 +1,28 @@
 import React, { Fragment } from "react";
 import Trash from "../../assets/svgs/Trash";
 import Edit from "../../assets/svgs/Edit";
+import DeleteModel from "../Model/DeleteModel";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../Buttons/button.scss";
 import "./list.scss";
 
-const List = ({ items, titles, name, path, handleDelete, unDeleteble }) => {
+const List = ({
+  items,
+  titles,
+  name,
+  path,
+  handleDelete,
+  unDeleteble,
+  setModelComponent,
+}) => {
   const history = useHistory();
   const handleEdit = (id) => {
     history.push(`${path}/EDIT/${id}`);
+  };
+
+  const showDeleteModel = (id) => {
+    setModelComponent(<DeleteModel deleteObj={() => handleDelete(id)} />);
   };
 
   return (
@@ -45,7 +58,7 @@ const List = ({ items, titles, name, path, handleDelete, unDeleteble }) => {
 
                   <Trash
                     className=" list__icon list__icon--trash"
-                    handleDelete={handleDelete}
+                    showDeleteModel={showDeleteModel}
                     id={item.id}
                   />
                 </td>

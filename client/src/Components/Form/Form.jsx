@@ -15,6 +15,7 @@ const Form = ({
   title,
   reset,
   buttomText,
+  action,
 }) => {
   return (
     <div className="form">
@@ -65,6 +66,7 @@ const Form = ({
                     defaultValue={item.defaultValue}
                     handleChange={handleSelect}
                     error={errors[item.name]}
+                    action={action}
                   />
                 </div>
               );

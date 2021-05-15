@@ -8,7 +8,7 @@ import {
   adminDash,
 } from "../../Constant/Dashboards/AdminDashboard";
 
-const MainAdmin = () => {
+const MainAdmin = ({ setModelComponent }) => {
   return (
     <Fragment>
       <Dashboard dashboard={adminDash} DefaultIdentif={adminDefaultIdentif} />
@@ -20,11 +20,9 @@ const MainAdmin = () => {
               path={`/admin${route.path}`}
               exact
               render={(props) => (
-                <Container
-                  title={route.title}
-                  component={route.component}
-                  {...props}
-                />
+                <Container title={route.title} {...props}>
+                  <route.component setModelComponent={setModelComponent} />
+                </Container>
               )}
             />
           ))}

@@ -4,7 +4,7 @@ import Request from "../../../Services/request";
 import { countryList } from "../../../Constant/Lists/adminLists";
 import { adminAPI } from "../../../Services/api";
 
-const ListCountry = () => {
+const ListCountry = ({ setModelComponent }) => {
   const [countries, setCountries] = useState([]);
   useEffect(() => {
     try {
@@ -29,6 +29,7 @@ const ListCountry = () => {
     try {
       await Request("delete", adminAPI.COUNTRY, id);
       setCountries(countries.filter((country) => country.id !== id));
+      setModelComponent(null);
     } catch (error) {
       console.log(error.message);
     }
@@ -41,6 +42,7 @@ const ListCountry = () => {
       name="add Country"
       handleDelete={handleDelete}
       path="/admin/countries"
+      setModelComponent={setModelComponent}
     />
   );
 };
