@@ -66,7 +66,8 @@ public class UserController {
             return new ResponseEntity<>("No user provided",HttpStatus.BAD_REQUEST);
         if(userRepository.findById(user.getId())==null)
             return new ResponseEntity<>("No user with the provided id",HttpStatus.BAD_REQUEST);
-
+        System.out.println("----------------");
+        addRoleToUser(user,user.getRoles().get(0).getRoleName().toString());
         userRepository.save(user);
         return new ResponseEntity<>("user updated successfully", HttpStatus.OK);
     }

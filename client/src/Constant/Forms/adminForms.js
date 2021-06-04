@@ -12,7 +12,7 @@ export const userFORM = (defaultValues) => {
       defaultValue: defaultValues["username"],
     },
 
-    {
+    !defaultValues.password && {
       input: "input",
       name: "password",
       id: "password",
@@ -95,7 +95,6 @@ export const organizationFORM = (defaultValues) => {
 };
 
 export const formationForm = (defaultValues, domains) => {
-
   return [
     {
       input: "input",
@@ -177,7 +176,6 @@ export const formationForm = (defaultValues, domains) => {
 };
 
 export const formateurFORM = (defaultValues, organizations) => {
-  
   return [
     {
       input: "input",

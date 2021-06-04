@@ -39,15 +39,7 @@ export const adminDash = [
     name: "Sessions",
     url: `${adminDefaultUrl}/sessions`,
   },
-  {
-    Icon: DashIcon,
-    name: "Options",
-    subList: [
-      { name: "Option 1", identif: "option1", url: `${adminDefaultUrl}` },
-      { name: "Option 2", identif: "option2", url: `${adminDefaultUrl}` },
-      { name: "Option 2", identif: "option3", url: `${adminDefaultUrl}` },
-    ],
-  },
+
   {
     Icon: Earth,
     identif: "Countries",
