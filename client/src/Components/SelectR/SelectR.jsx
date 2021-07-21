@@ -17,7 +17,7 @@ const SelectR = ({
         defaultValue={defaultValue}
         classNamePrefix={`react-select  ${error && "react-select--error"}`}
         placeholder={defaultText}
-        isMulti={isMulti}
+        isMulti
         onChange={handleChange}
         options={options}
       />
@@ -31,7 +31,7 @@ const SelectR = ({
           defaultValue={defaultValue}
           classNamePrefix={`react-select  ${error && "react-select--error"}`}
           placeholder={defaultText}
-          isMulti={isMulti}
+          isMulti
           onChange={handleChange}
           options={options}
         />

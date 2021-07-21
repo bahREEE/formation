@@ -59,7 +59,7 @@ const Form = ({
               return (
                 <div className="mb-small" key={index}>
                   <SelectR
-                    isMulti
+                    isMultih
                     defaultText={item.defaultText}
                     onChange={handleChange}
                     options={item.options}
@@ -71,7 +71,7 @@ const Form = ({
                 </div>
               );
             default:
-              return <h1>hello</h1>;
+              return null;
           }
         })}
 

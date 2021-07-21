@@ -22,6 +22,7 @@ const EditAccount = () => {
         const { data } = await RequestApi("get", `${adminAPI.USER}${id}`);
 
         setUser({
+          id: data.id,
           username: data.username,
           role: data.roles[0].roleName,
           password: data.password,
@@ -74,8 +75,10 @@ const EditAccount = () => {
     e.preventDefault();
     try {
       if (!checkError()) {
-        //   const result = await RequestApi("put", adminAPI.USER, "", user);
-
+        await RequestApi("put", adminAPI.USER, "", {
+          ...user,
+          roles: [{ roleName: user.role }],
+        });
         history.push("/admin/accounts");
       }
     } catch (error) {

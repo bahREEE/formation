@@ -58,7 +58,7 @@ const Signup = () => {
       if (!checkError()) {
         const { data } = await RequestApi("post", login.SIGN, "", {
           ...client,
-          role: "USER",
+          role: "ROLE_USER",
         });
         localStorage.setItem("user", JSON.stringify(data.user));
         localStorage.setItem("token", `Bearer ${data.token}`);
